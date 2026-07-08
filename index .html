@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Source Infrastructure Research — Sanjay C.</title>
+<meta name="description" content="Independent research by Sanjay C. on open source infrastructure gaps: accessibility, AI contribution policy, and internationalization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EEF1F4;
+    --card: #FFFFFF;
+    --ink: #141B2E;
+    --ink-soft: #4C5768;
+    --ink-faint: #8892A0;
+    --teal: #2F6F6B;
+    --teal-soft: #E4EEED;
+    --amber: #A8752F;
+    --amber-soft: #F4E9DA;
+    --line: #CBD2D9;
+    --line-soft: #DEE3E8;
+    --max: 760px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 28px 28px,
+      var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--teal); text-decoration-color: var(--line); text-underline-offset: 3px; }
+  a:hover{ text-decoration-color: var(--teal); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  .mono{
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  /* ---------- Top bar ---------- */
+  header.topbar{
+    position: sticky; top:0; z-index: 20;
+    backdrop-filter: blur(6px);
+    background: rgba(238,241,244,0.86);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .topbar-inner{
+    max-width: 1040px; margin: 0 auto;
+    padding: 16px 28px;
+    display:flex; align-items:center; justify-content: space-between;
+    gap: 20px;
+  }
+  .brand{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px; letter-spacing: 0.04em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .brand b{ color: var(--teal); }
+  nav.jumplinks{
+    display:flex; gap: 22px; flex-wrap: wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px; letter-spacing: 0.03em;
+  }
+  nav.jumplinks a{ color: var(--ink-soft); text-decoration:none; }
+  nav.jumplinks a:hover{ color: var(--teal); }
+
+  /* ---------- Shell / rail layout ---------- */
+  main{ max-width: 1040px; margin: 0 auto; padding: 0 28px 120px; }
+
+  section{
+    display: grid;
+    grid-template-columns: 64px minmax(0,1fr);
+    gap: 28px;
+    padding-top: 76px;
+    scroll-margin-top: 76px;
+  }
+  section .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    padding-top: 6px;
+  }
+  section .body{
+    border-top: 1px solid var(--line-soft);
+    padding-top: 22px;
+  }
+
+  h1,h2,h3{
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 14px;
+  }
+  h2{ font-size: 26px; letter-spacing: -0.01em; }
+  h3{ font-size: 18px; margin-bottom: 6px; }
+  p{ margin: 0 0 14px; color: var(--ink-soft); }
+  p:last-child{ margin-bottom: 0; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 96px 28px 64px;
+    max-width: 1040px; margin: 0 auto;
+  }
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.08;
+    max-width: 14ch;
+    letter-spacing: -0.015em;
+  }
+  .hero .byline{
+    margin-top: 18px;
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .hero .byline strong{ color: var(--ink); font-weight: 600; }
+  .rule-full{
+    margin-top: 64px;
+    border: none; border-top: 1px solid var(--line);
+  }
+
+  /* ---------- Status chips ---------- */
+  .status{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 4px 10px 4px 8px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .status::before{
+    content:""; width:7px; height:7px; border-radius:50%;
+  }
+  .status.active{ background: var(--teal-soft); color: var(--teal); }
+  .status.active::before{ background: var(--teal); box-shadow: 0 0 0 3px rgba(47,111,107,0.16); }
+  .status.planning{ background: var(--amber-soft); color: var(--amber); }
+  .status.planning::before{ background: var(--amber); box-shadow: 0 0 0 3px rgba(168,117,47,0.16); }
+
+  /* ---------- Research cards ---------- */
+  .research-card{
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .research-card:last-child{ margin-bottom: 0; }
+
+  /* ---------- Approach list ---------- */
+  ol.approach{
+    list-style: none; counter-reset: step; margin: 0 0 18px; padding:0;
+  }
+  ol.approach li{
+    counter-increment: step;
+    display:grid; grid-template-columns: 26px 1fr; gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink-soft);
+  }
+  ol.approach li:first-child{ padding-top: 0; }
+  ol.approach li:last-child{ border-bottom:none; }
+  ol.approach li::before{
+    content: counter(step);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px; color: var(--teal);
+  }
+
+  /* ---------- Publications ---------- */
+  .pub{
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .pub:last-child{ border-bottom: none; }
+  .pub .venue{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px; letter-spacing:0.03em; text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+  .pub .title{
+    font-size: 16.5px; color: var(--ink); font-weight: 500;
+  }
+  .pub .title a{
+    color: var(--ink);
+    text-decoration-color: var(--line);
+  }
+  .pub .title a:hover{ text-decoration-color: var(--teal); color: var(--teal); }
+  .pub .dek{
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  /* ---------- Background list ---------- */
+  ul.plain{ margin:0; padding:0; list-style:none; }
+  ul.plain li{
+    position: relative; padding: 8px 0 8px 18px; color: var(--ink-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  ul.plain li:last-child{ border-bottom: none; }
+  ul.plain li::before{
+    content:"—"; position:absolute; left:0; color: var(--ink-faint);
+  }
+
+  /* ---------- Interest tags ---------- */
+  .tags{ display:flex; flex-wrap:wrap; gap: 9px; }
+  .tags span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 100px;
+  }
+
+  /* ---------- Collaboration ---------- */
+  .collab-grid{
+    display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 10px; margin-bottom: 18px;
+  }
+  .collab-grid div{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px; color: var(--ink-soft);
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-list{ display:flex; flex-direction:column; gap:10px; }
+  .contact-list a, .contact-list span{
+    font-family:'IBM Plex Mono', monospace; font-size: 14.5px;
+  }
+  .contact-list .label{ color: var(--ink-faint); display:inline-block; width: 84px; }
+
+  footer{
+    max-width: 1040px; margin: 0 auto; padding: 60px 28px 40px;
+    display:flex; justify-content: space-between; align-items:center; gap: 16px; flex-wrap: wrap;
+    border-top: 1px solid var(--line-soft);
+    margin-top: 60px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px; color: var(--ink-faint);
+  }
+
+  @media (max-width: 640px){
+    section{ grid-template-columns: 1fr; gap: 8px; }
+    section .tag{ padding-top:0; }
+    nav.jumplinks{ display:none; }
+    .hero{ padding-top: 64px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">sanjay<b>c</b>.dev <span style="color:var(--ink-faint)">/ oss-infra-research</span></div>
+    <nav class="jumplinks">
+      <a href="#mission">Mission</a>
+      <a href="#current">Current</a>
+      <a href="#publications">Publications</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Independent Research</div>
+  <h1>Open Source Infrastructure Research</h1>
+  <p class="byline">Research by <strong>Sanjay C.</strong> — studying the infrastructure gaps in scalability, inclusiveness, sustainability, and governance across open source ecosystems.</p>
+  <hr class="rule-full">
+</div>
+
+<main>
+
+  <section id="mission">
+    <div class="tag">§01</div>
+    <div class="body">
+      <h2>Research Mission</h2>
+      <p>Open source software has become the foundation of modern technology, yet many aspects of its infrastructure continue to evolve organically rather than by design. My research focuses on identifying recurring infrastructure gaps that affect the scalability, inclusiveness, sustainability, and governance of open source ecosystems.</p>
+      <p>Rather than proposing isolated tools, I study patterns across multiple projects to develop practical, evidence-based approaches that help maintainers, contributors, foundations, platform providers, and the broader open source community.</p>
+    </div>
+  </section>
+
+  <section id="current">
+    <div class="tag">§02</div>
+    <div class="body">
+      <h2>Current Research</h2>
+
+      <div class="research-card">
+        <span class="status active">Active Research</span>
+        <h3>Accessibility Infrastructure for Open Source</h3>
+        <p>Exploring practical approaches that help projects make accessibility easier to adopt, maintain, and scale through reusable workflows, guidance, and supporting infrastructure.</p>
+      </div>
+
+      <div class="research-card">
+        <span class="status planning">Research Planning</span>
+        <h3>AI Contribution Policies &amp; Verification Signals</h3>
+        <p>Studying how open source projects can communicate AI-assisted contribution expectations through portable, machine-readable policy definitions and contributor verification workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="previous">
+    <div class="tag">§03</div>
+    <div class="body">
+      <h2>Previous Research</h2>
+      <div class="research-card">
+        <h3>Open Source Language Infrastructure</h3>
+        <p>Research into localization workflows, internationalization governance, and the infrastructure needed to support multilingual open source communities.</p>
+        <p>This work resulted in publications examining language inclusion, maintainer workflows, and infrastructure gaps across multiple open source projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="tag">§04</div>
+    <div class="body">
+      <h2>Research Approach</h2>
+      <p>My work follows an evidence-first methodology:</p>
+      <ol class="approach">
+        <li>Study real-world open source projects.</li>
+        <li>Identify recurring infrastructure gaps.</li>
+        <li>Analyze existing community practices.</li>
+        <li>Develop practical reference implementations.</li>
+        <li>Publish findings through articles, repositories, and community discussions.</li>
+      </ol>
+      <p>The objective is to complement existing open source practices with reusable infrastructure that reduces friction while preserving community-driven governance.</p>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="tag">§05</div>
+    <div class="body">
+      <h2>Publications</h2>
+
+      <div class="pub">
+        <div class="venue">Communications of the ACM</div>
+        <div class="title"><a href="https://cacm.acm.org/blogcacm/open-sources-hidden-language-gap/" target="_blank" rel="noopener">Open Source's Hidden Language Gap: Volunteers Are Filling It Alone</a></div>
+        <div class="dek">AI inclusion will fail quietly if the developer tools around AI remain English-first.</div>
+      </div>
+
+      <div class="pub">
+        <div class="venue">DevOps.com</div>
+        <div class="title"><a href="https://devops.com/what-five-localization-pull-requests-revealed-about-open-source-governance-a-field-report-on-open-sources-i18n-infrastructure-gap/" target="_blank" rel="noopener">What Five Localization Pull Requests Revealed About Open Source Governance: A Field Report on Open Source's i18n Infrastructure Gap</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="background">
+    <div class="tag">§06</div>
+    <div class="body">
+      <h2>Professional Background</h2>
+      <ul class="plain">
+        <li>Over 30 years in enterprise software, product management, and capital markets technology.</li>
+        <li>Worked with global financial institutions including UBS, Deutsche Bank, and SAC Capital.</li>
+        <li>Former MBA faculty member teaching Strategy, Finance, and Risk Management.</li>
+        <li>Currently an independent technology advisor and researcher based in Bengaluru, India.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="interests">
+    <div class="tag">§07</div>
+    <div class="body">
+      <h2>Areas of Interest</h2>
+      <div class="tags">
+        <span>Open Source Infrastructure</span>
+        <span>Accessibility</span>
+        <span>Open Source Governance</span>
+        <span>AI-assisted Software Development</span>
+        <span>Developer Experience</span>
+        <span>Open Source Standards</span>
+        <span>Internationalization (i18n)</span>
+        <span>Community Sustainability</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="collaboration">
+    <div class="tag">§08</div>
+    <div class="body">
+      <h2>Collaboration</h2>
+      <p>I welcome discussions with:</p>
+      <div class="collab-grid">
+        <div>Open source foundations</div>
+        <div>Researchers</div>
+        <div>Platform teams</div>
+        <div>Accessibility communities</div>
+        <div>AI tooling teams</div>
+        <div>Open source maintainers</div>
+      </div>
+      <p>If your work aligns with these research areas, I would be pleased to exchange ideas and explore opportunities for collaboration.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="tag">§09</div>
+    <div class="body">
+      <h2>Contact</h2>
+      <div class="contact-list">
+        <div><span class="label">GitHub</span><a href="https://github.com/ecogetaway" target="_blank" rel="noopener">github.com/ecogetaway</a></div>
+        <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/sanjay-c-1464602/" target="_blank" rel="noopener">linkedin.com/in/sanjay-c-1464602</a></div>
+        <div><span class="label">Email</span><a href="mailto:ecogetaway@gmail.com">ecogetaway@gmail.com</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 Sanjay C. — Independent Research</div>
+  <div>Bengaluru, India</div>
+</footer>
+
+</body>
+</html>
