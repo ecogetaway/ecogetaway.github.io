@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open Source Infrastructure Research — Sanjay C.</title>
 <meta name="description" content="Independent research by Sanjay C. on open source infrastructure gaps: accessibility, AI contribution policy, and internationalization.">
+<meta property="og:title" content="Open Source Infrastructure Research — Sanjay C.">
+<meta property="og:description" content="Independent research on infrastructure gaps in open source: accessibility, AI contribution policy, and internationalization.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ecogetaway.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232F6F6B'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23EEF1F4' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,7 +20,7 @@
     --card: #FFFFFF;
     --ink: #141B2E;
     --ink-soft: #4C5768;
-    --ink-faint: #8892A0;
+    --ink-faint: #5F6B7C;
     --teal: #2F6F6B;
     --teal-soft: #E4EEED;
     --amber: #A8752F;
@@ -30,9 +36,7 @@
 
   body{
     margin:0;
-    background:
-      radial-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 28px 28px,
-      var(--paper);
+    background: var(--paper);
     color: var(--ink);
     font-family: 'IBM Plex Sans', system-ui, sans-serif;
     font-size: 16px;
@@ -62,12 +66,16 @@
     gap: 20px;
   }
   .brand{
+    display: inline-flex; align-items: baseline; gap: 8px;
     font-family:'IBM Plex Mono', monospace;
     font-size: 13px; letter-spacing: 0.04em;
-    color: var(--ink);
+    color: var(--ink-soft);
+    text-decoration: none;
     white-space: nowrap;
   }
-  .brand b{ color: var(--teal); }
+  .brand b{ color: var(--ink); font-weight: 600; }
+  .brand .sep{ color: var(--line); }
+  .brand .desc{ color: var(--ink-soft); }
   nav.jumplinks{
     display:flex; gap: 22px; flex-wrap: wrap;
     font-family:'IBM Plex Mono', monospace;
@@ -95,6 +103,7 @@
   section .body{
     border-top: 1px solid var(--line-soft);
     padding-top: 22px;
+    max-width: var(--max);
   }
 
   h1,h2,h3{
@@ -112,6 +121,7 @@
   .hero{
     padding: 96px 28px 64px;
     max-width: 1040px; margin: 0 auto;
+    background: radial-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 28px 28px;
   }
   .hero .eyebrow{
     font-family:'IBM Plex Mono', monospace;
@@ -133,7 +143,6 @@
     color: var(--ink-soft);
     max-width: 46ch;
   }
-  .hero .byline strong{ color: var(--ink); font-weight: 600; }
   .rule-full{
     margin-top: 64px;
     border: none; border-top: 1px solid var(--line);
@@ -202,16 +211,10 @@
   }
   .pub .title a{
     color: var(--ink);
-    text-decoration-color: var(--line);
+    text-decoration-color: var(--ink-faint);
+    text-decoration-thickness: 1px;
   }
   .pub .title a:hover{ text-decoration-color: var(--teal); color: var(--teal); }
-  .pub .dek{
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-style: italic;
-    font-size: 14.5px;
-    color: var(--ink-soft);
-    margin-top: 6px;
-  }
 
   /* ---------- Background list ---------- */
   ul.plain{ margin:0; padding:0; list-style:none; }
@@ -222,32 +225,6 @@
   ul.plain li:last-child{ border-bottom: none; }
   ul.plain li::before{
     content:"—"; position:absolute; left:0; color: var(--ink-faint);
-  }
-
-  /* ---------- Interest tags ---------- */
-  .tags{ display:flex; flex-wrap:wrap; gap: 9px; }
-  .tags span{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 12.5px;
-    color: var(--ink);
-    background: var(--card);
-    border: 1px solid var(--line);
-    padding: 6px 12px;
-    border-radius: 100px;
-  }
-
-  /* ---------- Collaboration ---------- */
-  .collab-grid{
-    display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-    gap: 10px; margin-bottom: 18px;
-  }
-  .collab-grid div{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 12.5px; color: var(--ink-soft);
-    background: var(--card);
-    border: 1px solid var(--line-soft);
-    border-radius: 6px;
-    padding: 12px 14px;
   }
 
   /* ---------- Contact ---------- */
@@ -271,6 +248,7 @@
     section .tag{ padding-top:0; }
     nav.jumplinks{ display:none; }
     .hero{ padding-top: 64px; }
+    .brand .sep, .brand .desc{ display:none; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -282,10 +260,13 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="brand">Sanjay C. / Open Source Infrastructure Research<b> <span style="color:var(--ink-faint)">/ oss-infra-research</span></div>
+    <a class="brand" href="#top" aria-label="Sanjay C. — Open Source Infrastructure Research">
+      <b>Sanjay C.</b><span class="sep">/</span><span class="desc">Open Source Infrastructure Research</span>
+    </a>
     <nav class="jumplinks">
       <a href="#mission">Mission</a>
       <a href="#current">Current</a>
+      <a href="#previous">Previous</a>
       <a href="#publications">Publications</a>
       <a href="#background">Background</a>
       <a href="#contact">Contact</a>
@@ -293,10 +274,10 @@
   </div>
 </header>
 
-<div class="hero">
-  <div class="eyebrow">Independent Research</div>
+<div class="hero" id="top">
+  <div class="eyebrow">Independent Researcher · Bengaluru, India</div>
   <h1>Open Source Infrastructure Research</h1>
-  <p class="byline">Research by <strong>Sanjay C.</strong> — studying the infrastructure gaps in scalability, inclusiveness, sustainability, and governance across open source ecosystems.</p>
+  <p class="byline">I study the infrastructure gaps in scalability, inclusiveness, sustainability, and governance across open source ecosystems.</p>
   <hr class="rule-full">
 </div>
 
@@ -308,6 +289,13 @@
       <h2>Research Mission</h2>
       <p>Open source software has become the foundation of modern technology, yet many aspects of its infrastructure continue to evolve organically rather than by design. My research focuses on identifying recurring infrastructure gaps that affect the scalability, inclusiveness, sustainability, and governance of open source ecosystems.</p>
       <p>Rather than proposing isolated tools, I study patterns across multiple projects to develop practical, evidence-based approaches that help maintainers, contributors, foundations, platform providers, and the broader open source community.</p>
+      <ol class="approach">
+        <li>Study real-world open source projects.</li>
+        <li>Identify recurring infrastructure gaps.</li>
+        <li>Analyze existing community practices.</li>
+        <li>Develop practical reference implementations.</li>
+        <li>Publish findings through articles, repositories, and community discussions.</li>
+      </ol>
     </div>
   </section>
 
@@ -342,91 +330,42 @@
     </div>
   </section>
 
-  <section id="approach">
-    <div class="tag">§04</div>
-    <div class="body">
-      <h2>Research Approach</h2>
-      <p>My work follows an evidence-first methodology:</p>
-      <ol class="approach">
-        <li>Study real-world open source projects.</li>
-        <li>Identify recurring infrastructure gaps.</li>
-        <li>Analyze existing community practices.</li>
-        <li>Develop practical reference implementations.</li>
-        <li>Publish findings through articles, repositories, and community discussions.</li>
-      </ol>
-      <p>The objective is to complement existing open source practices with reusable infrastructure that reduces friction while preserving community-driven governance.</p>
-    </div>
-  </section>
-
   <section id="publications">
-    <div class="tag">§05</div>
+    <div class="tag">§04</div>
     <div class="body">
       <h2>Publications</h2>
 
       <div class="pub">
-        <div class="venue">Communications of the ACM</div>
-        <div class="title"><a href="https://cacm.acm.org/blogcacm/open-sources-hidden-language-gap/" target="_blank" rel="noopener">Open Source's Hidden Language Gap: Volunteers Are Filling It Alone</a></div>
-        <div class="dek">AI inclusion will fail quietly if the developer tools around AI remain English-first.</div>
+        <div class="venue">Communications of the ACM · May 2026</div>
+        <div class="title"><a href="https://cacm.acm.org/blogcacm/open-sources-hidden-language-gap/" target="_blank" rel="noopener">Open Source's Hidden Language Gap</a></div>
       </div>
 
       <div class="pub">
-        <div class="venue">DevOps.com</div>
+        <div class="venue">DevOps.com · June 2026</div>
         <div class="title"><a href="https://devops.com/what-five-localization-pull-requests-revealed-about-open-source-governance-a-field-report-on-open-sources-i18n-infrastructure-gap/" target="_blank" rel="noopener">What Five Localization Pull Requests Revealed About Open Source Governance: A Field Report on Open Source's i18n Infrastructure Gap</a></div>
       </div>
     </div>
   </section>
 
   <section id="background">
-    <div class="tag">§06</div>
+    <div class="tag">§05</div>
     <div class="body">
       <h2>Professional Background</h2>
       <ul class="plain">
-        <li>Over 30 years in enterprise software, product management, and capital markets technology.</li>
-        <li>Worked with global financial institutions including UBS, Deutsche Bank, and SAC Capital.</li>
-        <li>Former MBA faculty member teaching Strategy, Finance, and Risk Management.</li>
-        <li>Currently an independent technology advisor and researcher based in Bengaluru, India.</li>
+        <li>Over 30 years in global investment banking, capital markets technology, and product and program management — including eleven years based in the United States.</li>
+        <li>Worked with UBS, Deutsche Bank, and Point72 Asset Management.</li>
+        <li>Visiting faculty member in management programs, teaching Strategy, Finance, and Risk Management.</li>
+        <li>Independent advisor to early-stage founders on AI and product strategy.</li>
+        <li>Initiator of the OSS Language Inclusion Initiative.</li>
       </ul>
     </div>
   </section>
 
-  <section id="interests">
-    <div class="tag">§07</div>
-    <div class="body">
-      <h2>Areas of Interest</h2>
-      <div class="tags">
-        <span>Open Source Infrastructure</span>
-        <span>Accessibility</span>
-        <span>Open Source Governance</span>
-        <span>AI-assisted Software Development</span>
-        <span>Developer Experience</span>
-        <span>Open Source Standards</span>
-        <span>Internationalization (i18n)</span>
-        <span>Community Sustainability</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="collaboration">
-    <div class="tag">§08</div>
-    <div class="body">
-      <h2>Collaboration</h2>
-      <p>I welcome discussions with:</p>
-      <div class="collab-grid">
-        <div>Open source foundations</div>
-        <div>Researchers</div>
-        <div>Platform teams</div>
-        <div>Accessibility communities</div>
-        <div>AI tooling teams</div>
-        <div>Open source maintainers</div>
-      </div>
-      <p>If your work aligns with these research areas, I would be pleased to exchange ideas and explore opportunities for collaboration.</p>
-    </div>
-  </section>
-
   <section id="contact">
-    <div class="tag">§09</div>
+    <div class="tag">§06</div>
     <div class="body">
       <h2>Contact</h2>
+      <p>I welcome discussions with open source foundations, researchers, platform teams, and maintainers whose work aligns with these research areas.</p>
       <div class="contact-list">
         <div><span class="label">GitHub</span><a href="https://github.com/ecogetaway" target="_blank" rel="noopener">github.com/ecogetaway</a></div>
         <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/sanjay-c-1464602/" target="_blank" rel="noopener">linkedin.com/in/sanjay-c-1464602</a></div>
