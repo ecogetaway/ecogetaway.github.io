@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open Source Infrastructure Research — Sanjay C.</title>
-<meta name="description" content="Independent research by Sanjay C. on open source infrastructure gaps: accessibility, AI contribution policy, and internationalization.">
-<meta property="og:title" content="Open Source Infrastructure Research — Sanjay C.">
-<meta property="og:description" content="Independent research on infrastructure gaps in open source: accessibility, AI contribution policy, and internationalization.">
+<title>Sanjay C. — Open Source Contribution Infrastructure</title>
+<meta name="description" content="Sanjay C. builds evidence and small tools for under-served open source contribution paths: i18n security, accessibility review, and AI contribution policy.">
+<meta property="og:title" content="Sanjay C. — Open Source Contribution Infrastructure">
+<meta property="og:description" content="Evidence and tooling for i18n security, accessibility review, and AI contribution policy in open source.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ecogetaway.github.io/">
 <meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://ecogetaway.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232F6F6B'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23EEF1F4' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +32,6 @@
   }
 
   *{ box-sizing: border-box; }
-
   html{ scroll-behavior: smooth; }
 
   body{
@@ -48,11 +48,8 @@
   a:hover{ text-decoration-color: var(--teal); }
   a:focus-visible, button:focus-visible{ outline: 2px solid var(--teal); outline-offset: 3px; }
 
-  .mono{
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  }
+  .mono{ font-family: 'IBM Plex Mono', ui-monospace, monospace; }
 
-  /* ---------- Top bar ---------- */
   header.topbar{
     position: sticky; top:0; z-index: 20;
     backdrop-filter: blur(6px);
@@ -75,7 +72,6 @@
   }
   .brand b{ color: var(--ink); font-weight: 600; }
   .brand .sep{ color: var(--line); }
-  .brand .desc{ color: var(--ink-soft); }
   nav.jumplinks{
     display:flex; gap: 22px; flex-wrap: wrap;
     font-family:'IBM Plex Mono', monospace;
@@ -84,8 +80,7 @@
   nav.jumplinks a{ color: var(--ink-soft); text-decoration:none; }
   nav.jumplinks a:hover{ color: var(--teal); }
 
-  /* ---------- Shell / rail layout ---------- */
-  main{ max-width: 1040px; margin: 0 auto; padding: 0 28px 120px; }
+  main{ max-width: 1040px; margin: 0 auto; padding: 0 28px 80px; }
 
   section{
     display: grid;
@@ -117,9 +112,8 @@
   p{ margin: 0 0 14px; color: var(--ink-soft); }
   p:last-child{ margin-bottom: 0; }
 
-  /* ---------- Hero ---------- */
   .hero{
-    padding: 96px 28px 64px;
+    padding: 96px 28px 48px;
     max-width: 1040px; margin: 0 auto;
     background: radial-gradient(var(--line-soft) 1px, transparent 1px) 0 0 / 28px 28px;
   }
@@ -134,38 +128,61 @@
   .hero h1{
     font-size: clamp(34px, 5vw, 52px);
     line-height: 1.08;
-    max-width: 14ch;
+    max-width: 16ch;
     letter-spacing: -0.015em;
   }
   .hero .byline{
     margin-top: 18px;
     font-size: 17px;
     color: var(--ink-soft);
-    max-width: 46ch;
+    max-width: 52ch;
   }
+  .hero-actions{
+    margin-top: 28px;
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .btn{
+    display: inline-flex; align-items: center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px; letter-spacing: 0.02em;
+    padding: 10px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .btn-primary{
+    background: var(--teal); color: #fff;
+  }
+  .btn-primary:hover{ filter: brightness(1.05); text-decoration: none; }
+  .btn-secondary{
+    background: transparent; color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn-secondary:hover{ border-color: var(--teal); color: var(--teal); text-decoration: none; }
+
   .rule-full{
-    margin-top: 64px;
+    margin-top: 56px;
     border: none; border-top: 1px solid var(--line);
   }
 
-  /* ---------- Status chips ---------- */
   .status{
     display:inline-flex; align-items:center; gap:7px;
     font-family:'IBM Plex Mono', monospace;
     font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase;
     padding: 4px 10px 4px 8px;
     border-radius: 100px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .status::before{
     content:""; width:7px; height:7px; border-radius:50%;
   }
+  .status.shipped{ background: var(--teal-soft); color: var(--teal); }
+  .status.shipped::before{ background: var(--teal); box-shadow: 0 0 0 3px rgba(47,111,107,0.16); }
   .status.active{ background: var(--teal-soft); color: var(--teal); }
   .status.active::before{ background: var(--teal); box-shadow: 0 0 0 3px rgba(47,111,107,0.16); }
-  .status.planning{ background: var(--amber-soft); color: var(--amber); }
-  .status.planning::before{ background: var(--amber); box-shadow: 0 0 0 3px rgba(168,117,47,0.16); }
+  .status.draft{ background: var(--amber-soft); color: var(--amber); }
+  .status.draft::before{ background: var(--amber); box-shadow: 0 0 0 3px rgba(168,117,47,0.16); }
 
-  /* ---------- Research cards ---------- */
   .research-card{
     background: var(--card);
     border: 1px solid var(--line-soft);
@@ -174,8 +191,45 @@
     margin-bottom: 16px;
   }
   .research-card:last-child{ margin-bottom: 0; }
+  .hook{
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin: 0 0 12px;
+    line-height: 1.4;
+  }
+  .meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin: 0 0 14px;
+  }
+  .cta-row{
+    display: flex; flex-wrap: wrap; gap: 10px 16px;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .cta-row a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .cta-row a:hover{ text-decoration: underline; }
+  .cta-primary{ font-weight: 600; color: var(--teal); }
+  .cta-secondary{ color: var(--ink-soft); }
 
-  /* ---------- Approach list ---------- */
+  .code-inline{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    background: var(--paper);
+    border: 1px solid var(--line-soft);
+    padding: 2px 7px;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
   ol.approach{
     list-style: none; counter-reset: step; margin: 0 0 18px; padding:0;
   }
@@ -194,7 +248,6 @@
     font-size: 12px; color: var(--teal);
   }
 
-  /* ---------- Publications ---------- */
   .pub{
     padding: 18px 0;
     border-bottom: 1px solid var(--line-soft);
@@ -216,7 +269,6 @@
   }
   .pub .title a:hover{ text-decoration-color: var(--teal); color: var(--teal); }
 
-  /* ---------- Background list ---------- */
   ul.plain{ margin:0; padding:0; list-style:none; }
   ul.plain li{
     position: relative; padding: 8px 0 8px 18px; color: var(--ink-soft);
@@ -227,7 +279,6 @@
     content:"—"; position:absolute; left:0; color: var(--ink-faint);
   }
 
-  /* ---------- Contact ---------- */
   .contact-list{ display:flex; flex-direction:column; gap:10px; }
   .contact-list a, .contact-list span{
     font-family:'IBM Plex Mono', monospace; font-size: 14.5px;
@@ -238,7 +289,6 @@
     max-width: 1040px; margin: 0 auto; padding: 60px 28px 40px;
     display:flex; justify-content: space-between; align-items:center; gap: 16px; flex-wrap: wrap;
     border-top: 1px solid var(--line-soft);
-    margin-top: 60px;
     font-family:'IBM Plex Mono', monospace;
     font-size: 12px; color: var(--ink-faint);
   }
@@ -249,6 +299,7 @@
     nav.jumplinks{ display:none; }
     .hero{ padding-top: 64px; }
     .brand .sep, .brand .desc{ display:none; }
+    .contact-list .label{ display:block; width:auto; margin-bottom: 2px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -260,14 +311,13 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="#top" aria-label="Sanjay C. — Open Source Infrastructure Research">
-      <b>Sanjay C.</b><span class="sep">/</span><span class="desc">Open Source Infrastructure Research</span>
+    <a class="brand" href="#top" aria-label="Sanjay C. — Open Source Contribution Infrastructure">
+      <b>Sanjay C.</b><span class="sep">/</span><span class="desc">Contribution Infrastructure</span>
     </a>
-    <nav class="jumplinks">
-      <a href="#mission">Mission</a>
-      <a href="#current">Current</a>
-      <a href="#previous">Previous</a>
-      <a href="#publications">Publications</a>
+    <nav class="jumplinks" aria-label="Page sections">
+      <a href="#work">Work</a>
+      <a href="#method">Method</a>
+      <a href="#publications">Writing</a>
       <a href="#background">Background</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -275,65 +325,85 @@
 </header>
 
 <div class="hero" id="top">
-  <div class="eyebrow">Independent Researcher · Bengaluru, India</div>
-  <h1>Open Source Infrastructure Research</h1>
-  <p class="byline">I study the infrastructure gaps in scalability, inclusiveness, sustainability, and governance across open source ecosystems.</p>
+  <div class="eyebrow">Independent researcher · Bengaluru</div>
+  <h1>Sanjay C.</h1>
+  <p class="byline">I build evidence and small tools for open source contribution paths that never got the same infrastructure as code review — internationalization security, accessibility review, and AI contribution policy.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#work">See the three projects</a>
+    <a class="btn btn-secondary" href="https://github.com/ecogetaway" target="_blank" rel="noopener">GitHub</a>
+  </div>
   <hr class="rule-full">
 </div>
 
 <main>
 
-  <section id="mission">
+  <section id="work">
     <div class="tag">§01</div>
     <div class="body">
-      <h2>Research Mission</h2>
-      <p>Open source software has become the foundation of modern technology, yet many aspects of its infrastructure continue to evolve organically rather than by design. My research focuses on identifying recurring infrastructure gaps that affect the scalability, inclusiveness, sustainability, and governance of open source ecosystems.</p>
-      <p>Rather than proposing isolated tools, I study patterns across multiple projects to develop practical, evidence-based approaches that help maintainers, contributors, foundations, platform providers, and the broader open source community.</p>
-      <ol class="approach">
-        <li>Study real-world open source projects.</li>
-        <li>Identify recurring infrastructure gaps.</li>
-        <li>Analyze existing community practices.</li>
-        <li>Develop practical reference implementations.</li>
-        <li>Publish findings through articles, repositories, and community discussions.</li>
-      </ol>
+      <h2>Current work</h2>
+      <p>One method across three domains: document how the gap shows up in real repositories, then ship the smallest useful artifact.</p>
+
+      <article class="research-card">
+        <span class="status shipped">Shippable tool</span>
+        <h3>Language inclusion &amp; i18n security</h3>
+        <p class="hook">Locale files are an unscanned attack surface. Scan them in 60 seconds.</p>
+        <p class="meta">oss-language-inclusion · i18n-security-lint on PyPI</p>
+        <p>Four defect classes in translated strings — bidi overrides, XSS fragments, format-string drift, interpolation breakage — with a CI-ready linter. Prior writing in CACM and DevOps.com.</p>
+        <div class="cta-row">
+          <a class="cta-primary" href="https://github.com/ecogetaway/oss-language-inclusion" target="_blank" rel="noopener">Open the repo</a>
+          <span class="code-inline">pip install i18n-security-lint</span>
+          <a class="cta-secondary" href="https://pypi.org/project/i18n-security-lint/" target="_blank" rel="noopener">PyPI</a>
+        </div>
+      </article>
+
+      <article class="research-card">
+        <span class="status active">Active research</span>
+        <h3>Accessibility contribution review</h3>
+        <p class="hook">We scored six real a11y PRs. The most heavily reviewed one scored lowest.</p>
+        <p class="meta">oss-accessibility-inclusion · rubric + case studies + templates</p>
+        <p>A meta-review of how accessibility pull requests are actually reviewed — plus reusable ACCESSIBILITY.md, issue, and PR templates so the next fix is reviewable by a non-expert.</p>
+        <div class="cta-row">
+          <a class="cta-primary" href="https://github.com/ecogetaway/oss-accessibility-inclusion" target="_blank" rel="noopener">Open the repo</a>
+          <a class="cta-secondary" href="https://github.com/ecogetaway/oss-accessibility-inclusion/blob/main/ACCESSIBILITY.md" target="_blank" rel="noopener">Steal the template</a>
+          <a class="cta-secondary" href="https://github.com/ecogetaway/oss-accessibility-inclusion/blob/main/review-rubric.md" target="_blank" rel="noopener">Review rubric</a>
+        </div>
+      </article>
+
+      <article class="research-card">
+        <span class="status draft">Draft standard</span>
+        <h3>AI contribution policy</h3>
+        <p class="hook">Nine projects. Five incompatible postures. One proposed machine-readable shape.</p>
+        <p class="meta">oss-ai-contribution-policy · catalogue + schema v0.1</p>
+        <p>A verified catalogue of what curl, Ghostty, LLVM, tldraw, and peers actually wrote — and a draft <span class="code-inline">ai-contribution-policy.yml</span> built on verification over detection, not bans.</p>
+        <div class="cta-row">
+          <a class="cta-primary" href="https://github.com/ecogetaway/oss-ai-contribution-policy" target="_blank" rel="noopener">Open the repo</a>
+          <a class="cta-secondary" href="https://github.com/ecogetaway/oss-ai-contribution-policy/tree/main/policy-catalogue" target="_blank" rel="noopener">Policy catalogue</a>
+          <a class="cta-secondary" href="https://github.com/ecogetaway/oss-ai-contribution-policy/tree/main/spec/examples" target="_blank" rel="noopener">Copy a YAML example</a>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section id="current">
+  <section id="method">
     <div class="tag">§02</div>
     <div class="body">
-      <h2>Current Research</h2>
-
-      <div class="research-card">
-        <span class="status active">Active Research</span>
-        <h3>Accessibility Infrastructure for Open Source</h3>
-        <p>Exploring practical approaches that help projects make accessibility easier to adopt, maintain, and scale through reusable workflows, guidance, and supporting infrastructure.</p>
-      </div>
-
-      <div class="research-card">
-        <span class="status planning">Research Planning</span>
-        <h3>AI Contribution Policies &amp; Verification Signals</h3>
-        <p>Studying how open source projects can communicate AI-assisted contribution expectations through portable, machine-readable policy definitions and contributor verification workflows.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="previous">
-    <div class="tag">§03</div>
-    <div class="body">
-      <h2>Previous Research</h2>
-      <div class="research-card">
-        <h3>Open Source Language Infrastructure</h3>
-        <p>Research into localization workflows, internationalization governance, and the infrastructure needed to support multilingual open source communities.</p>
-        <p>This work resulted in publications examining language inclusion, maintainer workflows, and infrastructure gaps across multiple open source projects.</p>
-      </div>
+      <h2>Method</h2>
+      <p>Code contribution got linters, CI, and CODEOWNERS. Language work, accessibility work, and AI-assisted work mostly did not. I study that asymmetry in public repositories, then publish the smallest fix the evidence supports.</p>
+      <ol class="approach">
+        <li>Study real projects and primary sources.</li>
+        <li>Name the recurring infrastructure gap.</li>
+        <li>Score or catalogue what communities already invent.</li>
+        <li>Ship a small reference artifact (linter, rubric, schema).</li>
+        <li>Invite critique from maintainers, practitioners, and foundations.</li>
+      </ol>
+      <p>Portfolio label: <strong style="color:var(--ink); font-weight:500;">OSS Infrastructure Initiative</strong> — with Aniruddh Raghavendra. The public face of the work is the named researcher and the artifact, not an abstract organization.</p>
     </div>
   </section>
 
   <section id="publications">
-    <div class="tag">§04</div>
+    <div class="tag">§03</div>
     <div class="body">
-      <h2>Publications</h2>
+      <h2>Writing</h2>
 
       <div class="pub">
         <div class="venue">Communications of the ACM · May 2026</div>
@@ -342,30 +412,29 @@
 
       <div class="pub">
         <div class="venue">DevOps.com · June 2026</div>
-        <div class="title"><a href="https://devops.com/what-five-localization-pull-requests-revealed-about-open-source-governance-a-field-report-on-open-sources-i18n-infrastructure-gap/" target="_blank" rel="noopener">What Five Localization Pull Requests Revealed About Open Source Governance: A Field Report on Open Source's i18n Infrastructure Gap</a></div>
+        <div class="title"><a href="https://devops.com/what-five-localization-pull-requests-revealed-about-open-source-governance-a-field-report-on-open-sources-i18n-infrastructure-gap/" target="_blank" rel="noopener">What Five Localization Pull Requests Revealed About Open Source Governance</a></div>
       </div>
     </div>
   </section>
 
   <section id="background">
-    <div class="tag">§05</div>
+    <div class="tag">§04</div>
     <div class="body">
-      <h2>Professional Background</h2>
+      <h2>Background</h2>
       <ul class="plain">
-        <li>Over 30 years in global investment banking, capital markets technology, and product and program management — including eleven years based in the United States.</li>
-        <li>Worked with UBS, Deutsche Bank, and Point72 Asset Management.</li>
-        <li>Visiting faculty member in management programs, teaching Strategy, Finance, and Risk Management.</li>
+        <li>30+ years in capital markets technology and product/program management — including eleven years in the United States (UBS, Deutsche Bank, Point72).</li>
+        <li>Visiting faculty in management programs (strategy, finance, risk).</li>
         <li>Independent advisor to early-stage founders on AI and product strategy.</li>
-        <li>Initiator of the OSS Language Inclusion Initiative.</li>
+        <li>Open to talks, briefings, and maintainer feedback on contribution infrastructure.</li>
       </ul>
     </div>
   </section>
 
   <section id="contact">
-    <div class="tag">§06</div>
+    <div class="tag">§05</div>
     <div class="body">
       <h2>Contact</h2>
-      <p>I welcome discussions with open source foundations, researchers, platform teams, and maintainers whose work aligns with these research areas.</p>
+      <p>I welcome conversations with maintainers, OSPOs, foundations, researchers, and journalists working on these gaps.</p>
       <div class="contact-list">
         <div><span class="label">GitHub</span><a href="https://github.com/ecogetaway" target="_blank" rel="noopener">github.com/ecogetaway</a></div>
         <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/sanjay-c-1464602/" target="_blank" rel="noopener">linkedin.com/in/sanjay-c-1464602</a></div>
@@ -377,8 +446,8 @@
 </main>
 
 <footer>
-  <div>© 2026 Sanjay C. — Independent Research</div>
-  <div>Bengaluru, India</div>
+  <div>© 2026 Sanjay C. — Independent research</div>
+  <div>Canonical hub · ecogetaway.github.io</div>
 </footer>
 
 </body>
