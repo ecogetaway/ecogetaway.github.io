@@ -43,7 +43,7 @@
   <div class="eyebrow">Essay · August 2026</div>
   <h1 class="article-title">The overlay question security is rarely asked</h1>
   <p class="article-meta">By Sanjay C.</p>
-  <p class="byline">Accessibility overlays are usually argued on efficacy. Structurally they are third-party scripts with broad DOM authority — and the security review that pattern would normally attract often never happens, because the purchase was filed under compliance.</p>
+  <p class="byline">Accessibility overlays are usually argued on efficacy. Structurally they are third-party scripts with broad Document Object Model (DOM) authority — and the security review that pattern would normally attract often never happens, because the purchase was filed under compliance.</p>
   <hr class="rule-full" aria-hidden="true">
 </div>
 
@@ -51,10 +51,10 @@
     <div class="tag" aria-hidden="true">§00</div>
     <div class="body">
       <h2>A different question</h2>
-      <p>Accessibility overlays have been argued about for years, and the argument has one shape. Do they work? Do they actually fix WCAG failures, or do they paper over them? Disabled users say they get in the way. Vendors say they help. Regulators have started to take a view.</p>
+      <p>Accessibility overlays have been argued about for years, and the argument has one shape. Do they work? Do they actually fix Web Content Accessibility Guidelines (WCAG) failures, or do they paper over them? Disabled users say they get in the way. Vendors say they help. Regulators have started to take a view.</p>
       <p>I want to ask a different question, because I think it has been sitting in plain sight and belongs to a different department.</p>
       <h3>What is an accessibility overlay, structurally?</h3>
-      <p>In the typical commercial pattern, it is a third-party JavaScript file, loaded at runtime from a vendor's content delivery network, with enough authority to read and rewrite your DOM — including the accessibility tree — on page load, for visitors who receive that script.</p>
+      <p>In the typical commercial pattern, it is a third-party JavaScript file, loaded at runtime from a vendor's content delivery network (CDN), with enough authority to read and rewrite your DOM — including the accessibility tree — on page load, for visitors who receive that script.</p>
       <p>Write that sentence without the word "accessibility" and hand it to a security team. Watch what happens.</p>
     </div>
   </section>
@@ -64,7 +64,7 @@
     <div class="body">
       <h2>The vocabulary already exists</h2>
       <p>Security engineering has spent a decade building an apparatus for exactly this shape of risk, because it is the shape of many of the serious front-end incidents of the last ten years. Payment skimmers injected through compromised third-party scripts. Analytics libraries that quietly changed behaviour after an acquisition. Build-chain compromises where the vendor was fine and the delivery path was not.</p>
-      <p>The apparatus has names. Third-party script inventory. Subresource integrity. Content Security Policy. Vendor security assessment. Egress monitoring. Incident response paths that assume a dependency, not your own code, is the thing that failed.</p>
+      <p>The apparatus has names. Third-party script inventory. Subresource Integrity (SRI). Content Security Policy (CSP). Vendor security assessment. Egress monitoring. Incident response paths that assume a dependency, not your own code, is the thing that failed.</p>
       <p>That vocabulary shows up far less often in overlay discussions than the efficacy debate does. Overlay products are usually evaluated in accessibility terms, by accessibility people, against accessibility criteria. Which is reasonable — that is who noticed the product category. But it means a script with broad DOM authority is often judged on whether it improves colour contrast, and much less often on what happens if it is compromised or silently changed.</p>
       <p>This is adjacent to Magecart-era third-party risk and to ordinary CSP and SRI practice. Those disciplines already know how to talk about runtime scripts with write access to the page. What has been under-centred in overlay discourse is treating the product as that kind of dependency first, and as an accessibility intervention second.</p>
     </div>
@@ -77,7 +77,7 @@
       <p>Every third-party script is a risk. This category is harder in a specific way, and the specificity is what makes it worth writing about.</p>
       <p>A compromised analytics script can exfiltrate data. A compromised payment script can steal card numbers. Those are severe, and they are also often <em>detectable</em> — by monitoring, by users noticing, by fraud systems.</p>
       <p>A compromised or altered overlay can change what assistive technology announces. That is a channel few organisations monitor as a security signal, consumed by users who cannot always cross-check the announcement against the visual rendering. A sighted developer looking at the screen may see one interface. A screen reader user may hear another.</p>
-      <p>Consider a concrete failure mode, offered as illustration rather than as a report of an incident: an injected accessible name on a login control, a changed focus order that skips an error message, or a suppressed status announcement after a form submission. A sighted QA pass can still see a button labelled "Log in." An automated scan that runs against the raw HTML before the overlay script executes can miss what the user of assistive technology actually gets. A scan that runs in a browser after injection may see a different accessibility tree than your CI pipeline sees against static markup. Timing and environment matter.</p>
+      <p>Consider a concrete failure mode, offered as illustration rather than as a report of an incident: an injected accessible name on a login control, a changed focus order that skips an error message, or a suppressed status announcement after a form submission. A sighted quality assurance (QA) pass can still see a button labelled "Log in." An automated scan that runs against the raw HTML before the overlay script executes can miss what the user of assistive technology actually gets. A scan that runs in a browser after injection may see a different accessibility tree than your continuous integration (CI) pipeline sees against static markup. Timing and environment matter.</p>
       <p>I am not aware of a documented incident of this kind, and I want to be careful not to imply one has happened. The point is narrower and, I think, harder to dismiss: this is an attack surface with a weak detection story relative to many other third-party scripts, and it is often installed specifically on sites whose owners have been told they have a compliance problem.</p>
     </div>
   </section>
@@ -101,7 +101,7 @@
       <ul class="checklist" role="list">
         <li><strong>Is it in the third-party script inventory?</strong> If your organisation maintains one and the overlay is not on it, that gap is the finding, whatever you conclude about the product.</li>
         <li><strong>What is the Content Security Policy posture?</strong> Overlays typically need broad permissions to function. Document what you granted and why.</li>
-        <li><strong>Can you use subresource integrity?</strong> Often not, because these scripts update dynamically — which is precisely the property that makes SRI difficult or impossible and the risk real. If the answer is no, that is worth writing down rather than glossing.</li>
+        <li><strong>Can you use Subresource Integrity?</strong> Often not, because these scripts update dynamically — which is precisely the property that makes SRI difficult or impossible and the risk real. If the answer is no, that is worth writing down rather than glossing.</li>
         <li><strong>What is the vendor's security posture?</strong> The same questions you would ask any supplier with code execution rights in your users' browsers.</li>
         <li><strong>What is the exit plan?</strong> If the vendor is breached, acquired, or shuts down, what is the removal procedure and who runs it? At 3am?</li>
         <li><strong>Who owns it?</strong> If the answer is "compliance," ask who monitors it as software.</li>
