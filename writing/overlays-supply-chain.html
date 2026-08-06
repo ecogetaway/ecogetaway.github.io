@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The overlay question security is rarely asked — Sanjay C.</title>
+<meta name="description" content="Accessibility overlays are typically evaluated on efficacy. Structurally they are third-party scripts with DOM authority — and the security questions that would normally apply often never get asked, because procurement filed them under compliance.">
+<meta property="og:title" content="The overlay question security is rarely asked — Sanjay C.">
+<meta property="og:description" content="Overlays as third-party script risk: inventory, CSP, SRI, ownership, and exit plans — without reopening the efficacy debate.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ecogetaway.github.io/writing/overlays-supply-chain.html">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://ecogetaway.github.io/writing/overlays-supply-chain.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232F6F6B'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23EEF1F4' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to main content</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <b>Sanjay C.</b><span class="sep">/</span><span class="desc">Contribution Infrastructure</span>
+    </a>
+    <nav class="jumplinks" aria-label="Page sections">
+      <a href="#vocabulary">Vocabulary</a>
+      <a href="#surface">Surface</a>
+      <a href="#gate">Procurement</a>
+      <a href="#ask">Questions</a>
+      <a href="#wider">Wider point</a>
+    </nav>
+  </div>
+</header>
+
+<main id="content">
+
+<div class="hero" style="padding-bottom:12px;">
+  <div class="eyebrow">Essay · August 2026</div>
+  <h1 class="article-title">The overlay question security is rarely asked</h1>
+  <p class="article-meta">By Sanjay C.</p>
+  <p class="byline">Accessibility overlays are usually argued on efficacy. Structurally they are third-party scripts with broad DOM authority — and the security review that pattern would normally attract often never happens, because the purchase was filed under compliance.</p>
+  <hr class="rule-full">
+</div>
+
+  <section id="structurally" class="article-body">
+    <div class="tag" aria-hidden="true">§00</div>
+    <div class="body">
+      <p>Accessibility overlays have been argued about for years, and the argument has one shape. Do they work? Do they actually fix WCAG failures, or do they paper over them? Disabled users say they get in the way. Vendors say they help. Regulators have started to take a view.</p>
+      <p>I want to ask a different question, because I think it has been sitting in plain sight and belongs to a different department.</p>
+      <h2>What is an accessibility overlay, structurally?</h2>
+      <p>In the typical commercial pattern, it is a third-party JavaScript file, loaded at runtime from a vendor's content delivery network, with enough authority to read and rewrite your DOM — including the accessibility tree — on page load, for visitors who receive that script.</p>
+      <p>Write that sentence without the word "accessibility" and hand it to a security team. Watch what happens.</p>
+    </div>
+  </section>
+
+  <section id="vocabulary" class="article-body">
+    <div class="tag" aria-hidden="true">§01</div>
+    <div class="body">
+      <h2>The vocabulary already exists</h2>
+      <p>Security engineering has spent a decade building an apparatus for exactly this shape of risk, because it is the shape of many of the serious front-end incidents of the last ten years. Payment skimmers injected through compromised third-party scripts. Analytics libraries that quietly changed behaviour after an acquisition. Build-chain compromises where the vendor was fine and the delivery path was not.</p>
+      <p>The apparatus has names. Third-party script inventory. Subresource integrity. Content Security Policy. Vendor security assessment. Egress monitoring. Incident response paths that assume a dependency, not your own code, is the thing that failed.</p>
+      <p>That vocabulary shows up far less often in overlay discussions than the efficacy debate does. Overlay products are usually evaluated in accessibility terms, by accessibility people, against accessibility criteria. Which is reasonable — that is who noticed the product category. But it means a script with broad DOM authority is often judged on whether it improves colour contrast, and much less often on what happens if it is compromised or silently changed.</p>
+      <p>This is adjacent to Magecart-era third-party risk and to ordinary CSP and SRI practice. Those disciplines already know how to talk about runtime scripts with write access to the page. What has been under-centred in overlay discourse is treating the product as that kind of dependency first, and as an accessibility intervention second.</p>
+    </div>
+  </section>
+
+  <section id="surface" class="article-body">
+    <div class="tag" aria-hidden="true">§02</div>
+    <div class="body">
+      <h2>Why the accessibility tree is a difficult surface</h2>
+      <p>Every third-party script is a risk. This category is harder in a specific way, and the specificity is what makes it worth writing about.</p>
+      <p>A compromised analytics script can exfiltrate data. A compromised payment script can steal card numbers. Those are severe, and they are also often <em>detectable</em> — by monitoring, by users noticing, by fraud systems.</p>
+      <p>A compromised or altered overlay can change what assistive technology announces. That is a channel few organisations monitor as a security signal, consumed by users who cannot always cross-check the announcement against the visual rendering. A sighted developer looking at the screen may see one interface. A screen reader user may hear another.</p>
+      <p>Consider a concrete failure mode, offered as illustration rather than as a report of an incident: an injected accessible name on a login control, a changed focus order that skips an error message, or a suppressed status announcement after a form submission. A sighted QA pass can still see a button labelled "Log in." An automated scan that runs against the raw HTML before the overlay script executes can miss what the user of assistive technology actually gets. A scan that runs in a browser after injection may see a different accessibility tree than your CI pipeline sees against static markup. Timing and environment matter.</p>
+      <p>I am not aware of a documented incident of this kind, and I want to be careful not to imply one has happened. The point is narrower and, I think, harder to dismiss: this is an attack surface with a weak detection story relative to many other third-party scripts, and it is often installed specifically on sites whose owners have been told they have a compliance problem.</p>
+    </div>
+  </section>
+
+  <section id="gate" class="article-body">
+    <div class="tag" aria-hidden="true">§03</div>
+    <div class="body">
+      <h2>How it gets past the gate</h2>
+      <p>The procurement path is the interesting part.</p>
+      <p>An overlay is usually bought under a compliance line item, often urgently, often after a demand letter or an audit finding. It is framed as risk <em>reduction</em>. That framing can route it around the review it would otherwise get: a third-party script with this much authority, procured as an engineering dependency, would normally attract a security assessment, a CSP review, and a question about what happens at renewal.</p>
+      <p>Bought as compliance, it may attract few or none of them. The buying path treats the purchase as closing a point-in-time accessibility gap. What the organisation actually installs is a continuous runtime dependency — a script that keeps executing, updating, and reshaping the accessibility tree after the invoice is paid. Point-in-time compliance closure and sustained third-party script risk are not the same job, and they often sit in different budgets.</p>
+      <p>The organisation may reduce one measured risk and take on an unmeasured one, without a single owner whose remit covers both.</p>
+    </div>
+  </section>
+
+  <section id="ask" class="article-body">
+    <div class="tag" aria-hidden="true">§04</div>
+    <div class="body">
+      <h2>What to actually ask</h2>
+      <p>If your organisation runs an overlay, or is being sold one, these are questions with concrete answers. None of them requires taking a position on whether overlays work.</p>
+      <ul class="checklist" role="list">
+        <li><strong>Is it in the third-party script inventory?</strong> If your organisation maintains one and the overlay is not on it, that gap is the finding, whatever you conclude about the product.</li>
+        <li><strong>What is the Content Security Policy posture?</strong> Overlays typically need broad permissions to function. Document what you granted and why.</li>
+        <li><strong>Can you use subresource integrity?</strong> Often not, because these scripts update dynamically — which is precisely the property that makes SRI difficult or impossible and the risk real. If the answer is no, that is worth writing down rather than glossing.</li>
+        <li><strong>What is the vendor's security posture?</strong> The same questions you would ask any supplier with code execution rights in your users' browsers.</li>
+        <li><strong>What is the exit plan?</strong> If the vendor is breached, acquired, or shuts down, what is the removal procedure and who runs it? At 3am?</li>
+        <li><strong>Who owns it?</strong> If the answer is "compliance," ask who monitors it as software.</li>
+      </ul>
+      <p>A workable baseline is not exotic. The overlay appears in the third-party inventory. An engineering owner is named. CSP exceptions are documented with a review date. There is a removal runbook that does not depend on the vendor's support channel being available. If you cannot point to those four things, the security conversation has not started yet — regardless of what the accessibility conversation concluded.</p>
+    </div>
+  </section>
+
+  <section id="wider" class="article-body">
+    <div class="tag" aria-hidden="true">§05</div>
+    <div class="body">
+      <h2>The wider point</h2>
+      <p>I do not think accessibility teams should have to become security teams. I think the two conversations have run in separate rooms for too long, and this is one place where the separation has a cost that neither room can see on its own.</p>
+      <p>Accessibility people evaluate overlays on whether they work. Security people may never be asked, because the thing was filed under compliance. The result can be a category of third-party script that escapes a review it would not otherwise escape — not necessarily through anybody's failure, but through a gap between two disciplines' remits.</p>
+      <p>Asking the security question does not settle the efficacy question. But it is a question your organisation can answer this week, and the answer is useful whichever side of the overlay argument you are on.</p>
+      <p class="article-endnote">Sanjay C. works on evidence and small tools for open source accessibility review, including how accessibility contributions are checked, recorded, and maintained over time.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 Sanjay C. — Independent research</div>
+  <div><a href="../index.html">← Back to hub</a> · <a href="../accessibility.html">Accessibility statement</a></div>
+</footer>
+
+</body>
+</html>
