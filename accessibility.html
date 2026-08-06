@@ -40,8 +40,8 @@
 <div class="hero" style="padding-bottom:12px;">
   <div class="eyebrow">ecogetaway.github.io</div>
   <h1 style="max-width:22ch;">Accessibility statement</h1>
-  <p class="byline">Last reviewed 6 August 2026. This page states what conformance target this site holds itself to, what has actually been checked against that target, what is known not to meet it yet, and how to tell me about a barrier I haven't found.</p>
-  <hr class="rule-full">
+  <p class="byline">Last reviewed 6 August 2026 (updated same day for the writing page and shared stylesheet). This page states what conformance target this site holds itself to, what has actually been checked against that target, what is known not to meet it yet, and how to tell me about a barrier I haven't found.</p>
+  <hr class="rule-full" aria-hidden="true">
 </div>
 
   <section id="conformance">
@@ -61,6 +61,7 @@
         <li><strong style="color:var(--ink);">6 Aug 2026 — automated scan.</strong> accessiBe accessScan against the live page. Returned five confirmed failures across Landmarks and Interactive Content, plus several findings judged to be heuristic mismatches rather than real defects (see Contested findings below).</li>
         <li><strong style="color:var(--ink);">6 Aug 2026 — manual source audit.</strong> Full read of index.html against WCAG 2.2: every colour pair in the stylesheet checked against its actual contrast ratio (not eyeballed), DOM landmark structure traced, list-semantics behaviour checked against known Safari/VoiceOver quirks, focus order and skip-navigation reviewed.</li>
         <li><strong style="color:var(--ink);">6 Aug 2026 — remediation applied.</strong> Fourteen fixes shipped in one commit: a corrected colour-contrast failure, a non-text contrast failure on the secondary button and link underlines, focus obscured by the sticky header, an ARIA label overriding visible text, article regions used where a list was correct, the entire hero content sitting outside any landmark, the mobile nav being deleted instead of made responsive, four indistinguishable "Open the repo" links, and a stale, since-corrected claim on the accessibility-research card.</li>
+        <li><strong style="color:var(--ink);">6 Aug 2026 — shared stylesheet + writing page.</strong> Inline CSS was extracted to a single <code class="code-inline">style.css</code> so contrast tokens, focus styles, and sticky-header offset cannot drift across pages. The essay at <code class="code-inline">/writing/overlays-supply-chain.html</code> reuses the statement page's landmark pattern (skip link, <code class="code-inline">main id="content"</code>, sticky topbar, one <code class="code-inline">h1</code>, section <code class="code-inline">h2</code>s). Manual source review of that page checked heading order, list semantics for the checklist, link purpose in the footer, and decorative <code class="code-inline">hr</code> marking. It has not yet been run through accessScan as a separate live URL.</li>
         <li><strong style="color:var(--ink);">Screen-reader and keyboard verification — not yet performed.</strong> Everything above was found by a scanner and by reading code; neither is the same as using the page with a screen reader. This line will be updated with a date, the specific assistive technology and version, and what was observed, once that check is done.</li>
       </ul>
     </div>
@@ -77,7 +78,7 @@
       <p>Two of accessScan's Landmarks findings are heuristic rather than mechanical, and I have not changed the site to satisfy them:</p>
       <ul class="plain" role="list">
         <li><strong style="color:var(--ink);">"Main navigation should have role navigation."</strong> The page nav is already a correctly formed, correctly labelled <code class="code-inline">&lt;nav aria-label="Page sections"&gt;</code>. I read this finding as the scanner expecting a site-level primary nav and not recognising a section-jump nav as one. Adding a redundant <code class="code-inline">role="navigation"</code> to an element that is already a <code class="code-inline">&lt;nav&gt;</code> would be exactly the kind of ARIA-over-semantics change I'd flag in someone else's pull request.</li>
-        <li><strong style="color:var(--ink);">"Navigation landmark does not contain key site navigation links."</strong> The nav contains five in-page section anchors, not links to the four project repositories or the two articles. The finding is arguably picking up something real — an outside visitor's most likely destinations aren't in it — but the honest description of this nav is that it navigates page sections, which is what its label says. Filed here as accepted-and-contested rather than worked around silently.</li>
+        <li><strong style="color:var(--ink);">"Navigation landmark does not contain key site navigation links."</strong> The hub nav contains five in-page section anchors, not links to the project repositories or the writing pieces. The finding is arguably picking up something real — an outside visitor's most likely destinations aren't in it — but the honest description of this nav is that it navigates page sections, which is what its label says. Filed here as accepted-and-contested rather than worked around silently.</li>
       </ul>
     </div>
   </section>
@@ -96,7 +97,7 @@
 
 <footer>
   <div>© 2026 Sanjay C. — Independent research</div>
-  <div><a href="index.html">← Back to ecogetaway.github.io</a></div>
+  <div><a href="index.html">Back to ecogetaway.github.io</a></div>
 </footer>
 
 </body>
