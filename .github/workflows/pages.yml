@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: pages
@@ -18,7 +19,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://ecogetaway.github.io/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,6 +40,54 @@ jobs:
         with:
           path: ./_site
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Create Pages deployment (no wait)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner,
+              repo,
+              run_id: context.runId,
+            });
+            const artifact = artifacts.data.artifacts.find(a => a.name === 'github-pages');
+            if (!artifact) {
+              throw new Error('github-pages artifact not found');
+            }
+            const oidc_token = await core.getIDToken();
+            const pages_build_version = context.sha;
+            core.info(`Creating Pages deployment for ${pages_build_version} artifact=${artifact.id}`);
+            const res = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
+              owner,
+              repo,
+              artifact_id: artifact.id,
+              pages_build_version,
+              oidc_token,
+            });
+            core.info(`Created deployment: ${JSON.stringify(res.data)}`);
+
+      - name: Poll Pages deployment (do not cancel)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const id = context.sha;
+            const deadline = Date.now() + 45 * 60 * 1000;
+            while (Date.now() < deadline) {
+              const res = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{deployment_id}', {
+                owner,
+                repo,
+                deployment_id: id,
+              });
+              const status = res.data.status || '';
+              core.info(`Pages deployment status: ${status}`);
+              if (['succeed', 'success', 'deployment_complete', 'built', 'deployed'].includes(status)) {
+                core.info('Deployment succeeded');
+                return;
+              }
+              if (['deployment_failed', 'failed', 'deployment_cancelled', 'error'].includes(status)) {
+                throw new Error(`Deployment ended with status: ${status}`);
+              }
+              await new Promise(r => setTimeout(r, 30000));
+            }
+            core.warning('Still queued after 45m; leaving deployment in place (not cancelling).');
