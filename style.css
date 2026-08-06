@@ -30,47 +30,6 @@
     transition: top 120ms ease-out;
   }
   .skip-link:focus{ top:8px; }
-
-  /* Article pages */
-  .hero h1.article-title{
-    max-width: 28ch;
-  }
-  .article-meta{
-    margin-top: 14px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 13.5px;
-    letter-spacing: 0.04em;
-    color: var(--ink-soft);
-  }
-  .article-body strong{
-    color: var(--ink);
-    font-weight: 600;
-  }
-  .article-body em{
-    font-style: italic;
-  }
-  .article-body .lede{
-    color: var(--ink);
-    font-weight: 500;
-  }
-  ul.checklist{
-    list-style: none;
-    margin: 0 0 18px;
-    padding: 0;
-  }
-  ul.checklist li{
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line-soft);
-    color: var(--ink-soft);
-  }
-  ul.checklist li:last-child{ border-bottom: none; }
-  .article-endnote{
-    margin-top: 8px;
-    font-size: 15px;
-    color: var(--ink-faint);
-    font-style: italic;
-  }
-
   @media (prefers-reduced-motion: reduce){ .skip-link{ transition:none; } }
 
   body{
@@ -389,6 +348,13 @@
     color: var(--ink-soft);
   }
   ul.checklist li:last-child{ border-bottom: none; }
+  .article-disclosure{
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-soft);
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
   .article-endnote{
     margin-top: 8px;
     font-size: 15px;
