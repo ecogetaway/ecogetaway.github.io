@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sanjay C. — Open Source Contribution Infrastructure</title>
-<meta name="description" content="Sanjay C. builds evidence and small tools for under-served open source infrastructure: i18n security, accessibility review, AI contribution policy, and machine-operable documentation.">
+<meta name="description" content="Sanjay C. builds evidence and small tools for under-served open source infrastructure: localization and language inclusion, accessibility review, AI contribution policy, and machine-operable documentation.">
 <meta property="og:title" content="Sanjay C. — Open Source Contribution Infrastructure">
-<meta property="og:description" content="Evidence and tooling for i18n security, accessibility review, AI contribution policy, and machine-operable open source.">
+<meta property="og:description" content="Evidence and tooling for localization, accessibility review, AI contribution policy, and machine-operable open source.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ecogetaway.github.io/">
 <meta name="twitter:card" content="summary">
@@ -43,7 +43,7 @@
   <div class="eyebrow">Independent research · Bengaluru</div>
   <h1>Open source contribution infrastructure</h1>
   <p class="name">Sanjay C.</p>
-  <p class="byline">Evidence and small tools for parts of open source that never got the infrastructure code review did — internationalization security, accessibility review, AI contribution policy, and repositories legible to the AI agents that now read them.</p>
+  <p class="byline">Evidence and small tools for parts of open source that never got the infrastructure code review did — localization and language inclusion, accessibility review, AI contribution policy, and repositories legible to the AI agents that now read them.</p>
   <div class="hero-actions">
     <a class="btn btn-primary" href="#work">See the work</a>
     <a class="btn btn-secondary" href="https://github.com/ecogetaway" target="_blank" rel="noopener">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
@@ -60,27 +60,14 @@
       <ul class="card-list">
       <li class="research-card">
         <span class="status shipped">Shippable tool</span>
-        <h3>Language inclusion &amp; i18n security</h3>
-        <p class="hook">Locale files are an unscanned attack surface. Scan them in 60 seconds.</p>
+        <h3>Localization &amp; language inclusion</h3>
+        <p class="hook">Most open source ships English-first. The bottleneck on Indic locales is rarely translation quality — it is review and operations.</p>
         <p class="meta">oss-language-inclusion · i18n-security-lint on PyPI</p>
-        <p>Four defect classes in translated strings — bidi overrides, XSS fragments, format-string drift, interpolation breakage — with a CI-ready linter. Prior writing in CACM and DevOps.com.</p>
+        <p>Evidence on how localization pull requests actually get reviewed upstream, and what makes maintainers merge them — plus the tooling that gap needs. Includes i18n-security-lint, a CI linter for four defect classes in translated strings: bidi overrides, XSS fragments, format-string drift, interpolation breakage. Prior writing in CACM and DevOps.com.</p>
         <div class="cta-row">
           <a class="cta-primary" href="https://github.com/ecogetaway/oss-language-inclusion" target="_blank" rel="noopener">Open the repo<span class="visually-hidden"> for oss-language-inclusion (opens in a new tab)</span></a>
           <span class="code-inline">pip install i18n-security-lint</span>
           <a class="cta-secondary" href="https://pypi.org/project/i18n-security-lint/" target="_blank" rel="noopener">PyPI</a>
-        </div>
-      </li>
-
-      <li class="research-card">
-        <span class="status shipped">Shippable tool</span>
-        <h3>Machine-operable documentation</h3>
-        <p class="hook">The examples in your README are the most-copied, least-tested code you ship — now to AI agents as much as to people.</p>
-        <p class="meta">machine-operable/readme-ci · extractor + sandbox runner on PyPI</p>
-        <p>readme-ci finds the code examples in Markdown docs and runs them in a locked-down sandbox, so “our examples still work” becomes a CI check instead of a hope. First tool of <a href="https://machine-operable.org" target="_blank" rel="noopener">Machine-Operable Open Source</a> — a program on repositories that machines, not only people, now read.</p>
-        <div class="cta-row">
-          <a class="cta-primary" href="https://github.com/machine-operable/readme-ci" target="_blank" rel="noopener">Open the repo<span class="visually-hidden"> for readme-ci (opens in a new tab)</span></a>
-          <span class="code-inline">pip install readme-ci</span>
-          <a class="cta-secondary" href="https://pypi.org/project/readme-ci/" target="_blank" rel="noopener">PyPI</a>
         </div>
       </li>
 
@@ -94,6 +81,19 @@
           <a class="cta-primary" href="https://github.com/ecogetaway/oss-accessibility-inclusion" target="_blank" rel="noopener">Open the repo<span class="visually-hidden"> for oss-accessibility-inclusion (opens in a new tab)</span></a>
           <a class="cta-secondary" href="https://github.com/ecogetaway/oss-accessibility-inclusion/blob/main/ACCESSIBILITY.md" target="_blank" rel="noopener">Steal the template</a>
           <a class="cta-secondary" href="https://github.com/ecogetaway/oss-accessibility-inclusion/blob/main/review-rubric.md" target="_blank" rel="noopener">Review rubric</a>
+        </div>
+      </li>
+
+      <li class="research-card">
+        <span class="status shipped">Shippable tool</span>
+        <h3>Machine-operable documentation</h3>
+        <p class="hook">The examples in your README are the most-copied, least-tested code you ship — now to AI agents as much as to people.</p>
+        <p class="meta">machine-operable/readme-ci · extractor + sandbox runner on PyPI</p>
+        <p>readme-ci finds the code examples in Markdown docs and runs them in a locked-down sandbox, so “our examples still work” becomes a CI check instead of a hope. First tool of <a href="https://machine-operable.org" target="_blank" rel="noopener">Machine-Operable Open Source</a> — a program on repositories that machines, not only people, now read.</p>
+        <div class="cta-row">
+          <a class="cta-primary" href="https://github.com/machine-operable/readme-ci" target="_blank" rel="noopener">Open the repo<span class="visually-hidden"> for readme-ci (opens in a new tab)</span></a>
+          <span class="code-inline">pip install readme-ci</span>
+          <a class="cta-secondary" href="https://pypi.org/project/readme-ci/" target="_blank" rel="noopener">PyPI</a>
         </div>
       </li>
 
