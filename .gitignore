@@ -1,0 +1,24 @@
+# --- working documents: never publish (managed) ---
+#
+# This is a PUBLIC GitHub Pages site. Anything committed here is served at
+# ecogetaway.github.io/<filename>. Strategy documents, funding research, intern
+# plans and task lists sit in this folder as working files and must never be
+# published.
+#
+# This is an ALLOWLIST, not a deny-list: everything is ignored by default and
+# published files are named explicitly below. Extension rules are not enough
+# here — the sensitive working files are .md, the same extension as the site's
+# own published pages, so *.docx-style rules would miss all of them.
+#
+# To publish a new file: add a matching ! line below, or git add -f <path>.
+
+/*
+!/.gitignore
+!/.nojekyll
+!/README.md
+!/index.html
+!/style.css
+!/accessibility.html
+!/OSS-A11y-Simple-Explainer.md
+!/.github/
+!/writing/
