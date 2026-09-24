@@ -28,7 +28,8 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir -p _site/writing
-          cp index.html accessibility.html style.css README.md _site/
+          cp index.html accessibility.html 404.html style.css _site/
+          cp robots.txt sitemap.xml favicon.svg apple-touch-icon.png social-card.png _site/
           cp writing/*.html _site/writing/
           touch _site/.nojekyll
 

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Sanjay C. — Open source contribution infrastructure</title>
+  <desc id="description">Independent research on localization, accessibility review, AI contribution policy, and machine-operable documentation.</desc>
+  <rect width="1200" height="630" fill="#EEF1F4"/>
+  <g fill="#DEE3E8">
+    <circle cx="82" cy="82" r="3"/><circle cx="138" cy="82" r="3"/><circle cx="194" cy="82" r="3"/>
+    <circle cx="82" cy="138" r="3"/><circle cx="138" cy="138" r="3"/><circle cx="194" cy="138" r="3"/>
+    <circle cx="1006" cy="492" r="3"/><circle cx="1062" cy="492" r="3"/><circle cx="1118" cy="492" r="3"/>
+    <circle cx="1006" cy="548" r="3"/><circle cx="1062" cy="548" r="3"/><circle cx="1118" cy="548" r="3"/>
+  </g>
+  <rect x="74" y="70" width="8" height="490" rx="4" fill="#2F6F6B"/>
+  <text x="126" y="132" fill="#2F6F6B" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" letter-spacing="4">INDEPENDENT RESEARCH - BENGALURU</text>
+  <text x="126" y="232" fill="#141B2E" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="600">Open source contribution</text>
+  <text x="126" y="308" fill="#141B2E" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="600">infrastructure</text>
+  <text x="126" y="392" fill="#4C5768" font-family="Arial, Helvetica, sans-serif" font-size="30">Localization - Accessibility - AI policy - Documentation</text>
+  <line x1="126" y1="440" x2="1046" y2="440" stroke="#CBD2D9" stroke-width="2"/>
+  <text x="126" y="506" fill="#141B2E" font-family="Georgia, 'Times New Roman', serif" font-size="36">Sanjay C. · ecogetaway.github.io</text>
+</svg>
