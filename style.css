@@ -275,6 +275,7 @@
     text-decoration-thickness: 1px;
   }
   .pub .title a:hover{ text-decoration-color: var(--teal); color: var(--teal); }
+  .pub .summary{ margin: 6px 0 0; font-size: 15px; }
 
   ul.plain{ margin:0; padding:0; list-style:none; }
   ul.plain li{

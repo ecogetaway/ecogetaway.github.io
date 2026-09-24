@@ -5,13 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accessibility Statement — Sanjay C.</title>
 <meta name="description" content="Accessibility statement for ecogetaway.github.io — conformance target, what has been tested, known issues, and how to report a barrier.">
+<meta name="author" content="Sanjay C.">
+<meta property="og:site_name" content="Sanjay C.">
 <meta property="og:title" content="Accessibility Statement — Sanjay C.">
-<meta property="og:description" content="Accessibility statement for ecogetaway.github.io.">
+<meta property="og:description" content="WCAG 2.2 AA target, a dated testing log, known issues, and how to report a barrier on ecogetaway.github.io.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ecogetaway.github.io/accessibility.html">
+<meta property="og:image" content="https://ecogetaway.github.io/social-card.png">
+<meta property="og:image:alt" content="Open source contribution infrastructure — localization, accessibility, AI policy, documentation. Sanjay C.">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://ecogetaway.github.io/accessibility.html">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232F6F6B'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23EEF1F4' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,7 +28,7 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="index.html">
+    <a class="brand" href="./">
       <b>Sanjay C.</b><span class="sep">/</span><span class="desc">Contribution Infrastructure</span>
     </a>
     <nav class="jumplinks" aria-label="Page sections">
@@ -40,7 +45,7 @@
 <div class="hero" style="padding-bottom:12px;">
   <div class="eyebrow">ecogetaway.github.io</div>
   <h1 style="max-width:22ch;">Accessibility statement</h1>
-  <p class="byline">Last reviewed 7 August 2026. This page states what conformance target this site holds itself to, which pages that target covers, what has actually been checked against that target, what is known not to meet it yet, and how to tell me about a barrier I haven't found.</p>
+  <p class="byline">Last full review 7 August 2026; testing log updated 24 September 2026. This page states what conformance target this site holds itself to, which pages that target covers, what has actually been checked against that target, what is known not to meet it yet, and how to tell me about a barrier I haven't found.</p>
   <hr class="rule-full" aria-hidden="true">
 </div>
 
@@ -49,7 +54,7 @@
     <div class="body">
       <h2>Conformance target</h2>
       <p>This site targets <strong style="color:var(--ink);">Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>. Where a fix on this page cites a standard, it names the specific success criterion rather than just saying "accessibility issue" — for example, 1.4.3 Contrast (Minimum), 2.4.11 Focus Not Obscured, 2.5.3 Label in Name.</p>
-      <p>The target applies to every public page on this hub: the home page (<code class="code-inline">index.html</code>), this accessibility statement, and writing under <code class="code-inline">/writing/</code> (currently the overlay essay). Shared presentation lives in one stylesheet (<code class="code-inline">style.css</code>) so contrast tokens, focus visibility, and sticky-header offset stay consistent across those pages.</p>
+      <p>The target applies to every public page on this hub: the home page (<code class="code-inline">index.html</code>), this accessibility statement, writing under <code class="code-inline">/writing/</code> (currently the overlay essay), and the not-found page (<code class="code-inline">404.html</code>). Shared presentation lives in one stylesheet (<code class="code-inline">style.css</code>) so contrast tokens, focus visibility, and sticky-header offset stay consistent across those pages.</p>
       <p>This is a one-person personal site with no continuous integration (CI) pipeline, so conformance is checked by scan plus manual review, not by an automated gate on every change. That is a real limitation, named here rather than implied away.</p>
     </div>
   </section>
@@ -71,6 +76,7 @@
         <li><strong style="color:var(--ink);">6 Aug 2026 — axe-core on statement and writing page.</strong> Live scans of <code class="code-inline">accessibility.html</code> and <code class="code-inline">/writing/overlays-supply-chain.html</code>: 0 violations on both. Skip links target <code class="code-inline">#content</code> / <code class="code-inline">main id="content"</code>; each page has one <code class="code-inline">h1</code>. Visually hidden nodes on the statement are the same intentional link-purpose pattern (email application + new-tab cues); the writing page has none. Incomplete colour-contrast checks on hero text against the dotted background pattern were not treated as failures — same inconclusive class axe reported on the hub.</li>
         <li><strong style="color:var(--ink);">6 Aug 2026 — WAVE on statement and writing page.</strong> WebAIM WAVE against both live URLs: 0 errors, 0 contrast errors, 0 alerts on each (AIM Score 10/10). Features reported include skip link, skip link target, and document language — matching the shared landmark pattern.</li>
         <li><strong style="color:var(--ink);">7 Aug 2026 — VoiceOver + keyboard pass (hub, Safari).</strong> Operated the live home page with VoiceOver on, keyboard only, in Safari on macOS. Six checks: (1) first Tab reaches "Skip to main content"; (2) activating the skip link lands so the page <code class="code-inline">h1</code> ("Open source contribution infrastructure") is reached, not the later "Current work" section; (3) top-bar Tab order is skip link, brand, Work, Method, Writing, Background, Contact; (4) heading navigation finds a single <code class="code-inline">h1</code> then the section <code class="code-inline">h2</code>s; (5) an "Open the repo" link announces the repository name and "opens in a new tab"; (6) the footer "Accessibility statement" link is reachable by Tab and announced as a link. All six passed. Chrome was tried first; Safari was used for the recorded pass after Tab/focus behaviour was clearer there.</li>
+        <li><strong style="color:var(--ink);">24 Sep 2026 — search metadata and copy changes, re-scanned.</strong> Page titles, descriptions, sharing metadata and structured data were updated across the hub, this statement and the writing page; the hub's introduction and writing list gained text; a not-found page (<code class="code-inline">404.html</code>) was added. No landmark, heading-order or navigation structure changed. axe-core 4.10.2 was run against a local copy of all four pages before deployment, not against the live URLs: 0 violations on each. The only incomplete results were colour-contrast checks on text over the dotted hero background, the same inconclusive class recorded above. The hub was also checked at a 375&nbsp;px viewport: no horizontal scrolling. VoiceOver was not re-run for this change.</li>
         <li><strong style="color:var(--ink);">What this VoiceOver pass does not cover.</strong> It is a hub-only task pass in Safari + VoiceOver. It does not include NVDA, JAWS, or TalkBack, and it does not repeat the same six checks on this statement or the writing page with VoiceOver running. Those remain open.</li>
       </ul>
     </div>
@@ -107,7 +113,7 @@
 
 <footer>
   <div>© 2026 Sanjay C. — Independent research</div>
-  <div><a href="index.html">Back to ecogetaway.github.io</a></div>
+  <div><a href="./">Back to ecogetaway.github.io</a></div>
 </footer>
 
 </body>
