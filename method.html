@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How the research works: method and evidence rules — Sanjay C.</title>
+<meta name="description" content="The method behind the case studies and catalogues: what counts as evidence, how samples are chosen, how claims are re-checked, and where corrections are logged.">
+<meta name="author" content="Sanjay C.">
+<meta property="og:site_name" content="Sanjay C.">
+<meta property="og:title" content="How the research works: method and evidence rules">
+<meta property="og:description" content="What counts as evidence, how samples are chosen, how claims are re-checked, and where corrections are logged.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ecogetaway.github.io/method.html">
+<meta property="og:image" content="https://ecogetaway.github.io/social-card.png">
+<meta property="og:image:alt" content="Open source contribution infrastructure — localization, accessibility, AI policy, documentation. Sanjay C.">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://ecogetaway.github.io/method.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ecogetaway.github.io/method.html#webpage",
+      "url": "https://ecogetaway.github.io/method.html",
+      "name": "How the research works",
+      "description": "The method behind the case studies and catalogues: what counts as evidence, how samples are chosen, how claims are re-checked, and where corrections are logged.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://ecogetaway.github.io/#website"
+      },
+      "author": {
+        "@id": "https://ecogetaway.github.io/#sanjay-c"
+      },
+      "datePublished": "2026-09-25",
+      "dateModified": "2026-09-25",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Research method"
+        },
+        {
+          "@type": "Thing",
+          "name": "Open source contribution review"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to main content</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./">
+      <b>Sanjay C.</b><span class="sep">/</span><span class="desc">Contribution Infrastructure</span>
+    </a>
+    <nav class="jumplinks" aria-label="Page sections">
+      <a href="#question">Question</a>
+      <a href="#evidence">Evidence rules</a>
+      <a href="#samples">Samples</a>
+      <a href="#current">Keeping current</a>
+      <a href="#challenge">Challenge it</a>
+    </nav>
+  </div>
+</header>
+
+<main id="content">
+
+<div class="hero" style="padding-bottom:12px;">
+  <div class="eyebrow">Method</div>
+  <h1 style="max-width:22ch;">How the research works</h1>
+  <p class="byline">I study what open-source review records actually prove, and publish small, testable ways to make them prove more. This page sets out what counts as evidence, how the samples are chosen, and how claims are kept accurate over time.</p>
+  <hr class="rule-full" aria-hidden="true">
+</div>
+
+  <section id="question">
+    <div class="tag" aria-hidden="true">§01</div>
+    <div class="body">
+      <h2>One question, three settings</h2>
+      <p>What does an open-source review record (a pull-request status, a passing build, an approval, a disclosure line) actually establish, and what does it leave unknown?</p>
+      <ul class="plain" role="list">
+        <li><strong style="color:var(--ink);">Language.</strong> A translation that passes continuous integration has not necessarily been read by anyone who reads the language. The localization gap is an infrastructure problem as much as a translation problem. <a href="https://oss-infrastructure-initiative.netlify.app/language-inclusion" target="_blank" rel="noopener">Language inclusion workstream<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><strong style="color:var(--ink);">Accessibility.</strong> Review volume is not review quality: in the seven accessibility pull requests studied, the most heavily reviewed tied for the lowest score. <a href="https://oss-infrastructure-initiative.netlify.app/accessibility-contribution-review" target="_blank" rel="noopener">How the review rubric works<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><strong style="color:var(--ink);">AI contributions.</strong> A disclosure line does not show what was verified. The policy catalogue records what projects actually require. <a href="https://oss-infrastructure-initiative.netlify.app/ai-contribution-policies-compared" target="_blank" rel="noopener">21 policies compared<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="evidence">
+    <div class="tag" aria-hidden="true">§02</div>
+    <div class="body">
+      <h2>Evidence rules</h2>
+      <ol class="approach" role="list">
+        <li>Primary sources first: files, commits and timelines, then human review, then automation, then releases.</li>
+        <li>Bots are not counted as human reviewers, and a passing check is not assistive-technology or language verification.</li>
+        <li>People are described by their recorded role on the project (for example, collaborator or contributor), never by assumption.</li>
+        <li>Policies are quoted from the text a project adopted, not from proposals or reporting about them.</li>
+        <li>“Unknown” is a valid finding. Intent that isn’t on the record is not inferred.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="samples">
+    <div class="tag" aria-hidden="true">§03</div>
+    <div class="body">
+      <h2>What the samples can and cannot show</h2>
+      <p>The samples are small and chosen on purpose: seven accessibility pull requests, six localization contributions, 21 AI contribution policies. They are selected because they show a process clearly, not because they are representative. Findings are patterns in these samples, never rates or rankings.</p>
+      <p>The work studies how review processes handle contributions. It does not judge the people involved.</p>
+    </div>
+  </section>
+
+  <section id="current">
+    <div class="tag" aria-hidden="true">§04</div>
+    <div class="body">
+      <h2>Keeping claims current</h2>
+      <ul class="plain" role="list">
+        <li><strong style="color:var(--ink);">Dated.</strong> Every case study and catalogue entry states when it was last verified against its source.</li>
+        <li><strong style="color:var(--ink);">Checked weekly.</strong> Automated checks flag changes to the policy sources and new activity on the case-study threads, so they can be re-verified.</li>
+        <li><strong style="color:var(--ink);">Corrected in public.</strong> Corrections are logged in each repository, for example the <a href="https://github.com/ecogetaway/oss-language-inclusion/blob/main/CORRECTIONS.md" target="_blank" rel="noopener">language inclusion corrections log<span class="visually-hidden"> (opens in a new tab)</span></a>. Web pages are updated in place; published articles remain as published, and later corrections are recorded in the repository.</li>
+        <li><strong style="color:var(--ink);">AI assistance.</strong> I use AI tools to help structure writing and to check sources. Every factual claim is verified against primary sources, and the conclusions are my own.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="challenge">
+    <div class="tag" aria-hidden="true">§05</div>
+    <div class="body">
+      <h2>Challenge the work</h2>
+      <p>Disagreement is useful evidence. These open questions are the best place to start:</p>
+      <ul class="plain" role="list">
+        <li><a href="https://github.com/ecogetaway/oss-language-inclusion/issues/7" target="_blank" rel="noopener">Do the localization patterns match real translation-review practice?<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/ecogetaway/oss-accessibility-inclusion/issues/11" target="_blank" rel="noopener">Validate the accessibility review rubric<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/ecogetaway/oss-ai-contribution-policy/issues/32" target="_blank" rel="noopener">Is verification, not detection, the right primitive for AI contribution policy?<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+      <p>Everything else that needs help is on the initiative’s <a href="https://oss-infrastructure-initiative.netlify.app/contribute" target="_blank" rel="noopener">how you can help page<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 Sanjay C. — Independent research</div>
+  <div><a href="./">Back to ecogetaway.github.io</a> · <a href="/accessibility.html">Accessibility statement</a></div>
+</footer>
+
+</body>
+</html>
