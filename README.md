@@ -54,7 +54,7 @@ sips -s format png social-card.svg --out social-card.png
    and a real `datePublished`. Add the same entry to the homepage `@graph`.
 7. Link it from the homepage Writing or Current work section, with a one-line summary.
 8. Link out to the relevant initiative workstream page and repository, and link back from them where it fits.
-9. Add the URL to `sitemap.xml` and bump `lastmod` on any page you changed.
+9. Add the URL to `sitemap.xml` (`<loc>` is enough: the Pages workflow fills in `lastmod` from each file's last commit, in ISO 8601 with time).
 10. Add the file to the `.gitignore` allowlist and the workflow `cp` step.
 11. Descriptive alt text on any image; describe what it shows, not "image of".
 12. After deploy: check the URL returns 200, run axe or WAVE, add the result to the testing
