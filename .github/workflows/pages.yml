@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history: sitemap lastmod comes from each file's last commit
 
       - name: Prepare site files
         run: |
@@ -32,6 +34,7 @@ jobs:
           cp robots.txt sitemap.xml favicon.svg apple-touch-icon.png social-card.png _site/
           cp c7cf13d7a648be30c2b5e444592f218f.txt _site/   # IndexNow ownership key (see README)
           cp writing/*.html _site/writing/
+          python3 tools/sitemap_lastmod.py sitemap.xml _site/sitemap.xml https://ecogetaway.github.io .
           touch _site/.nojekyll
 
       - name: Configure Pages
