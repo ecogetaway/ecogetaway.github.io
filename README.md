@@ -30,6 +30,7 @@ Live: https://ecogetaway.github.io/
 - `404.html` — not-found page (noindex; uses root-relative links because it is served at any path)
 - `robots.txt`, `sitemap.xml` — crawler rules and the list of indexable URLs
 - `favicon.svg`, `apple-touch-icon.png`, `social-card.png` (source: `social-card.svg`)
+- `c7cf13d7a648be30c2b5e444592f218f.txt` — IndexNow ownership key. After deploying a new or changed page, submit it: see the initiative site's README for the one-line `curl`.
 
 Deploys run from `.github/workflows/pages.yml`, which copies files **by name**.
 A new file must be added in three places: the `.gitignore` allowlist, the
