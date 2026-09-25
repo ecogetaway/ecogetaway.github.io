@@ -26,6 +26,7 @@ Live: https://ecogetaway.github.io/
 - `style.css` — shared stylesheet (tokens, focus, contrast)
 - `index.html` — hub
 - `accessibility.html` — accessibility statement
+- `method.html` — how the research works: method, evidence rules, corrections
 - `writing/` — essays (start with `overlays-supply-chain.html`)
 - `404.html` — not-found page (noindex; uses root-relative links because it is served at any path)
 - `robots.txt`, `sitemap.xml` — crawler rules and the list of indexable URLs

@@ -28,7 +28,7 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir -p _site/writing
-          cp index.html accessibility.html 404.html style.css _site/
+          cp index.html accessibility.html method.html 404.html style.css _site/
           cp robots.txt sitemap.xml favicon.svg apple-touch-icon.png social-card.png _site/
           cp c7cf13d7a648be30c2b5e444592f218f.txt _site/   # IndexNow ownership key (see README)
           cp writing/*.html _site/writing/
