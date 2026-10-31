@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -78,6 +78,7 @@
         <li><strong style="color:var(--ink);">6 Aug 2026 — WAVE on statement and writing page.</strong> WebAIM WAVE against both live URLs: 0 errors, 0 contrast errors, 0 alerts on each (AIM Score 10/10). Features reported include skip link, skip link target, and document language — matching the shared landmark pattern.</li>
         <li><strong style="color:var(--ink);">7 Aug 2026 — VoiceOver + keyboard pass (hub, Safari).</strong> Operated the live home page with VoiceOver on, keyboard only, in Safari on macOS. Six checks: (1) first Tab reaches "Skip to main content"; (2) activating the skip link lands so the page <code class="code-inline">h1</code> ("Open source contribution infrastructure") is reached, not the later "Current work" section; (3) top-bar Tab order is skip link, brand, Work, Method, Writing, Background, Contact; (4) heading navigation finds a single <code class="code-inline">h1</code> then the section <code class="code-inline">h2</code>s; (5) an "Open the repo" link announces the repository name and "opens in a new tab"; (6) the footer "Accessibility statement" link is reachable by Tab and announced as a link. All six passed. Chrome was tried first; Safari was used for the recorded pass after Tab/focus behaviour was clearer there.</li>
         <li><strong style="color:var(--ink);">24 Sep 2026 — search metadata and copy changes, re-scanned.</strong> Page titles, descriptions, sharing metadata and structured data were updated across the hub, this statement and the writing page; the hub's introduction and writing list gained text; a not-found page (<code class="code-inline">404.html</code>) was added. No landmark, heading-order or navigation structure changed. axe-core 4.10.2 was run against a local copy of all four pages before deployment, not against the live URLs: 0 violations on each. The only incomplete results were colour-contrast checks on text over the dotted hero background, the same inconclusive class recorded above. The hub was also checked at a 375&nbsp;px viewport: no horizontal scrolling. VoiceOver was not re-run for this change.</li>
+        <li><strong style="color:var(--ink);">31 Oct 2026 — redesign pre-publication checks.</strong> All six local HTML pages passed semantic HTML validation, structured-data parsing, heading-order checks, and internal-link checks. The redesigned homepage passed rendered design and contrast checks at desktop and a 390&nbsp;px mobile viewport. Reflow was checked at 375, 390, 768, 1280, and 1440&nbsp;px with no page-level horizontal scrolling; reduced-motion styling was also confirmed. These checks do not replace a keyboard or screen-reader pass.</li>
         <li><strong style="color:var(--ink);">What this VoiceOver pass does not cover.</strong> It is a hub-only task pass in Safari + VoiceOver. It does not include NVDA, JAWS, or TalkBack, and it does not repeat the same six checks on this statement or the writing page with VoiceOver running. Those remain open.</li>
       </ul>
     </div>
@@ -88,7 +89,8 @@
     <div class="body">
       <h2>Known issues</h2>
       <ul class="plain" role="list">
-        <li><strong style="color:var(--ink);">Two newer pages not yet tested.</strong> The method page and the Translation Day note were added after the last recorded scan. Neither has had an automated scan or a VoiceOver pass, so the testing log above does not cover them.</li>
+        <li><strong style="color:var(--ink);">Redesign keyboard and screen-reader pass pending.</strong> The 31 October pre-publication checks cover structure, contrast, links, metadata, responsive reflow, and reduced motion. The redesigned pages have not yet had a complete keyboard-only or VoiceOver task pass, and the local redesign has not been re-run through axe-core or WAVE.</li>
+        <li><strong style="color:var(--ink);">Two newer pages lack assistive-technology testing.</strong> The method page and the Translation Day note were included in the 31 October structural checks, but neither has had an axe-core, WAVE, or VoiceOver pass.</li>
         <li><strong style="color:var(--ink);">Screen-reader coverage still narrow.</strong> Safari + VoiceOver on the hub is done (see Testing log). NVDA, JAWS, and TalkBack have not been run, and VoiceOver has not been re-run on this statement or the writing page. Named here so the gap stays visible.</li>
       </ul>
       <h3 style="margin-top:22px;">Contested findings</h3>

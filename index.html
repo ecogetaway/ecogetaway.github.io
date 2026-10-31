@@ -124,7 +124,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -134,13 +134,13 @@
 <header class="topbar">
   <div class="topbar-inner">
     <a class="brand" href="#top">
-      <b>Sanjay C.</b><span class="sep">/</span><span class="desc">Contribution Infrastructure</span>
+      <b>Sanjay C.</b><span>Independent researcher</span>
     </a>
     <nav class="jumplinks" aria-label="Page sections">
       <a href="#work">Work</a>
-      <a href="#method">Method</a>
       <a href="#publications">Writing</a>
-      <a href="#background">Background</a>
+      <a href="#method">Method</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -148,173 +148,169 @@
 
 <main id="content">
 
-<div class="hero" id="top">
-  <div class="eyebrow">Independent research · Bengaluru</div>
-  <h1>Open source contribution infrastructure</h1>
-  <p class="name">Sanjay C.</p>
-  <p class="byline">Research on the kinds of open source contribution that never got the infrastructure code review did — starting with localization and language inclusion (how translations into under-served locales, Indic languages among them, get reviewed upstream), then accessibility review, AI contribution policy, and repositories legible to the AI agents that now read them. Each strand pairs published evidence with a small, openly licensed tool, rubric, or draft schema.</p>
-  <div class="hero-actions">
-    <a class="btn btn-primary" href="#work">See the work</a>
-    <a class="btn btn-secondary" href="https://oss-infrastructure-initiative.netlify.app/">OSS Infrastructure Initiative</a>
-    <a class="btn btn-secondary" href="https://github.com/ecogetaway" target="_blank" rel="noopener">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-  </div>
-  <hr class="rule-full" aria-hidden="true">
-</div>
-
-  <section id="work">
-    <div class="tag" aria-hidden="true">§01</div>
-    <div class="body">
-      <h2>Current work</h2>
-      <p>One method across four domains: document how the gap shows up in real repositories, then ship the smallest useful artifact.</p>
-
-      <ul class="card-list">
-      <li class="research-card">
-        <span class="status shipped">Shippable tool</span>
-        <h3>Localization &amp; language inclusion</h3>
-        <p class="hook">Most open source ships English-first. The bottleneck on Indic locales is rarely translation quality — it is review and operations.</p>
-        <p class="meta">oss-language-inclusion · i18n-security-lint on PyPI</p>
-        <p>Evidence on how localization pull requests actually get reviewed upstream, and what makes maintainers merge them — plus the tooling that gap needs. Includes i18n-security-lint, a CI linter for four defect classes in translated strings: bidi overrides, XSS fragments, format-string drift, interpolation breakage. Prior writing in CACM and DevOps.com.</p>
-        <div class="cta-row">
-          <a class="cta-primary" href="https://oss-infrastructure-initiative.netlify.app/language-inclusion">Workstream overview</a>
-          <a class="cta-primary" href="https://github.com/ecogetaway/oss-language-inclusion" target="_blank" rel="noopener">Open the repo<span class="visually-hidden"> for oss-language-inclusion (opens in a new tab)</span></a>
-          <span class="code-inline">pip install i18n-security-lint</span>
-          <a class="cta-secondary" href="https://pypi.org/project/i18n-security-lint/" target="_blank" rel="noopener">PyPI<span class="visually-hidden"> package for i18n-security-lint (opens in a new tab)</span></a>
-        </div>
-      </li>
-
-      <li class="research-card">
-        <span class="status active">Active research</span>
-        <h3>Accessibility contribution review</h3>
-        <p class="hook">We scored seven real accessibility PRs against a 12-point rubric. None reached the mature band, and the most heavily reviewed one tied for the lowest score.</p>
-        <p class="meta">oss-accessibility-inclusion · rubric + case studies + templates</p>
-        <p>A meta-review of how accessibility pull requests are actually reviewed — plus reusable ACCESSIBILITY.md, issue, and PR templates so the next fix is reviewable by a non-expert. Findings published in Bootcamp.</p>
-        <div class="cta-row">
-          <a class="cta-primary" href="https://oss-infrastructure-initiative.netlify.app/accessibility-contribution-review">Workstream overview</a>
-          <a class="cta-primary" href="https://github.com/ecogetaway/oss-accessibility-inclusion" target="_blank" rel="noopener">Open the repo<span class="visually-hidden"> for oss-accessibility-inclusion (opens in a new tab)</span></a>
-          <a class="cta-secondary" href="https://github.com/ecogetaway/oss-accessibility-inclusion/blob/main/ACCESSIBILITY.md" target="_blank" rel="noopener">Steal the template<span class="visually-hidden"> (opens in a new tab)</span></a>
-          <a class="cta-secondary" href="https://github.com/ecogetaway/oss-accessibility-inclusion/blob/main/review-rubric.md" target="_blank" rel="noopener">Review rubric<span class="visually-hidden"> (opens in a new tab)</span></a>
-        </div>
-      </li>
-
-      <li class="research-card">
-        <span class="status shipped">Shippable tool</span>
-        <h3>Machine-operable documentation</h3>
-        <p class="hook">The examples in your README are the most-copied, least-tested code you ship — now to AI agents as much as to people.</p>
-        <p class="meta">machine-operable/readme-ci · extractor + sandbox runner on PyPI</p>
-        <p>readme-ci finds the code examples in Markdown docs and runs them in a locked-down sandbox, so “our examples still work” becomes a CI check instead of a hope. First tool of <a href="https://machine-operable.org" target="_blank" rel="noopener">Machine-Operable Open Source<span class="visually-hidden"> (opens in a new tab)</span></a> — a program on repositories that machines, not only people, now read.</p>
-        <div class="cta-row">
-          <a class="cta-primary" href="https://oss-infrastructure-initiative.netlify.app/machine-operable-documentation">Workstream overview</a>
-          <a class="cta-primary" href="https://github.com/machine-operable/readme-ci" target="_blank" rel="noopener">Open the repo<span class="visually-hidden"> for readme-ci (opens in a new tab)</span></a>
-          <span class="code-inline">pip install readme-ci</span>
-          <a class="cta-secondary" href="https://pypi.org/project/readme-ci/" target="_blank" rel="noopener">PyPI<span class="visually-hidden"> package for readme-ci (opens in a new tab)</span></a>
-        </div>
-      </li>
-
-      <li class="research-card">
-        <span class="status draft">Draft standard</span>
-        <h3>AI contribution policy</h3>
-        <p class="hook">21 project policies, verified at source, with stances ranging from disclosure rules to outright bans. One proposed machine-readable shape.</p>
-        <p class="meta">oss-ai-contribution-policy · catalogue + schema v0.1</p>
-        <p>A verified catalogue of what curl, Ghostty, LLVM, tldraw, and peers actually wrote — and a draft <span class="code-inline">ai-contribution-policy.yml</span> built on verification over detection, not bans.</p>
-        <div class="cta-row">
-          <a class="cta-primary" href="https://oss-infrastructure-initiative.netlify.app/ai-contribution-policy">Workstream overview</a>
-          <a class="cta-primary" href="https://github.com/ecogetaway/oss-ai-contribution-policy" target="_blank" rel="noopener">Open the repo<span class="visually-hidden"> for oss-ai-contribution-policy (opens in a new tab)</span></a>
-          <a class="cta-secondary" href="https://github.com/ecogetaway/oss-ai-contribution-policy/tree/main/policy-catalogue" target="_blank" rel="noopener">Policy catalogue<span class="visually-hidden"> (opens in a new tab)</span></a>
-          <a class="cta-secondary" href="https://github.com/ecogetaway/oss-ai-contribution-policy/tree/main/spec/examples" target="_blank" rel="noopener">Copy a YAML example<span class="visually-hidden"> (opens in a new tab)</span></a>
-        </div>
-      </li>
-      </ul>
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-title">
+      <p class="hero-name">Sanjay C. · Bengaluru</p>
+      <h1 id="hero-title">The missing infrastructure around open-source contribution.</h1>
+    </div>
+    <div class="hero-statement">
+      <p>Code review has linters, CI, and named owners. Localization, accessibility work, and AI-assisted contribution often do not.</p>
+      <p>I study that asymmetry in public repositories, then publish the smallest artifact the evidence supports: a linter, a review rubric, a template, or a draft schema.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#publications">Read the evidence</a>
+        <a class="btn btn-secondary" href="https://oss-infrastructure-initiative.netlify.app/">Visit the initiative</a>
+      </div>
+    </div>
+    <div class="evidence-rail" role="group" aria-label="Research record">
+      <div>
+        <span class="evidence-label">Current note</span>
+        <a href="writing/translation-day-2026.html">Being understood includes the software</a>
+      </div>
+      <div>
+        <span class="evidence-label">Programme</span>
+        <span>4 research domains · 2 tools on PyPI</span>
+      </div>
+      <div>
+        <span class="evidence-label">External publication</span>
+        <a href="https://cacm.acm.org/blogcacm/open-sources-hidden-language-gap/" target="_blank" rel="noopener">Communications of the ACM<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
     </div>
   </section>
 
-  <section id="method">
-    <div class="tag" aria-hidden="true">§02</div>
-    <div class="body">
-      <h2>Method</h2>
-      <p>Code contribution got linters, CI, and CODEOWNERS. Language work, accessibility work, and AI-assisted work mostly did not. I study that asymmetry in public repositories, then publish the smallest fix the evidence supports.</p>
-      <ol class="approach" role="list">
-        <li>Study real projects and primary sources.</li>
-        <li>Name the recurring infrastructure gap.</li>
-        <li>Score or catalogue what communities already invent.</li>
-        <li>Ship a small reference artifact (linter, rubric, schema).</li>
-        <li>Invite critique from maintainers, practitioners, and foundations.</li>
-      </ol>
-      <p><a href="method.html">How the research works: the full method and evidence rules</a>.</p>
-      <p>These workstreams are published together as the <a href="https://oss-infrastructure-initiative.netlify.app/">OSS Infrastructure Initiative</a>, which has its own pages for each workstream, the research and evidence, the roadmap, and ways to contribute. This page is the researcher's portfolio: publications, background, and contact.</p>
+  <section id="work">
+    <header class="section-heading">
+      <h2>Four lines of inquiry, one method</h2>
+      <p>Each begins with primary-source evidence and ends with a public artifact small enough for a real project to test.</p>
+    </header>
+    <div class="work-index">
+      <article class="work-item work-item-featured">
+        <div class="work-state"><span class="status shipped">Tool on PyPI</span><span>Localization</span></div>
+        <h3>Localization &amp; language inclusion</h3>
+        <div class="work-summary">
+          <p>Most open source ships English-first. The bottleneck on Indic locales is rarely translation quality — it is review and operations. This work follows how under-served locales get reviewed upstream, and what maintainers need when they cannot read every language they ship.</p>
+          <p class="work-proof">Output: <span class="code-inline">i18n-security-lint</span>, a CI linter for four defect classes in translated strings: bidi overrides, XSS fragments, format-string drift, interpolation breakage. Plus field reports and contribution evidence.</p>
+        </div>
+        <div class="link-row">
+          <a href="https://oss-infrastructure-initiative.netlify.app/language-inclusion">Workstream overview</a>
+          <a href="https://github.com/ecogetaway/oss-language-inclusion" target="_blank" rel="noopener">Repository<span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a href="https://pypi.org/project/i18n-security-lint/" target="_blank" rel="noopener">PyPI<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+      </article>
+      <article class="work-item">
+        <div class="work-state"><span class="status active">Active research</span><span>Accessibility</span></div>
+        <h3>Accessibility contribution review</h3>
+        <p>We scored seven real accessibility PRs against a 12-point rubric. None reached the mature band, and the most heavily reviewed one tied for the lowest score. Reusable ACCESSIBILITY.md, issue, and PR templates make the next fix reviewable by a non-expert.</p>
+        <div class="link-row">
+          <a href="https://oss-infrastructure-initiative.netlify.app/accessibility-contribution-review">Overview</a>
+          <a href="https://github.com/ecogetaway/oss-accessibility-inclusion" target="_blank" rel="noopener">Repository<span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a href="https://github.com/ecogetaway/oss-accessibility-inclusion/blob/main/ACCESSIBILITY.md" target="_blank" rel="noopener">Steal the template<span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a href="https://github.com/ecogetaway/oss-accessibility-inclusion/blob/main/review-rubric.md" target="_blank" rel="noopener">Review rubric<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+      </article>
+      <article class="work-item">
+        <div class="work-state"><span class="status shipped">Tool on PyPI</span><span>Documentation</span></div>
+        <h3>Machine-operable documentation</h3>
+        <p><span class="code-inline">readme-ci</span> finds the code examples in Markdown docs and runs them in a locked-down sandbox, so “our examples still work” becomes a CI check instead of a hope. First tool of <a href="https://machine-operable.org" target="_blank" rel="noopener">Machine-Operable Open Source<span class="visually-hidden"> (opens in a new tab)</span></a>, a program on repositories that machines, not only people, now read.</p>
+        <div class="link-row">
+          <a href="https://oss-infrastructure-initiative.netlify.app/machine-operable-documentation">Overview</a>
+          <a href="https://github.com/machine-operable/readme-ci" target="_blank" rel="noopener">Repository<span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a href="https://pypi.org/project/readme-ci/" target="_blank" rel="noopener">PyPI<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+      </article>
+      <article class="work-item">
+        <div class="work-state"><span class="status draft">Draft standard</span><span>Governance</span></div>
+        <h3>AI contribution policy</h3>
+        <p>21 project policies, verified at source, with stances ranging from disclosure rules to outright bans. A verified catalogue of what curl, Ghostty, LLVM, tldraw, and peers actually wrote, and a draft <span class="code-inline">ai-contribution-policy.yml</span> built on verification over detection, not bans.</p>
+        <div class="link-row">
+          <a href="https://oss-infrastructure-initiative.netlify.app/ai-contribution-policy">Overview</a>
+          <a href="https://github.com/ecogetaway/oss-ai-contribution-policy" target="_blank" rel="noopener">Repository<span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a href="https://github.com/ecogetaway/oss-ai-contribution-policy/tree/main/policy-catalogue" target="_blank" rel="noopener">Policy catalogue<span class="visually-hidden"> (opens in a new tab)</span></a>
+          <a href="https://github.com/ecogetaway/oss-ai-contribution-policy/tree/main/spec/examples" target="_blank" rel="noopener">Copy a YAML example<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+      </article>
     </div>
   </section>
 
   <section id="publications">
-    <div class="tag" aria-hidden="true">§03</div>
-    <div class="body">
-      <h2>Writing</h2>
-
-      <ul class="pub-list">
-              <li class="pub">
-        <div class="venue">Note · September 2026</div>
-        <div class="title"><a href="writing/translation-day-2026.html">Being understood includes the software</a></div>
-        <p class="summary">For International Translation Day: in open source, the translated words people read pass through far lighter review than the code around them.</p>
+    <header class="section-heading">
+      <h2>Published arguments</h2>
+      <p>The short version of the work, written where practitioners can challenge it.</p>
+    </header>
+    <article class="featured-publication">
+      <div class="publication-meta">Communications of the ACM · May 2026</div>
+      <h3><a href="https://cacm.acm.org/blogcacm/open-sources-hidden-language-gap/" target="_blank" rel="noopener">Open Source's Hidden Language Gap<span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+      <p>Why the localization gap in open source is an infrastructure problem rather than a translation problem.</p>
+    </article>
+    <ol class="publication-index" reversed>
+      <li>
+        <div class="publication-meta">Note · September 2026</div>
+        <h3><a href="writing/translation-day-2026.html">Being understood includes the software</a></h3>
+        <p>For International Translation Day: in open source, the translated words people read pass through far lighter review than the code around them.</p>
       </li>
-      <li class="pub">
-        <div class="venue">Bootcamp · August 2026</div>
-        <div class="title"><a href="https://medium.com/design-bootcamp/can-your-project-actually-review-an-accessibility-contribution-15d055e24eb1" target="_blank" rel="noopener">Can your project actually review an accessibility contribution?<span class="visually-hidden"> (opens in a new tab)</span></a></div>
-        <p class="summary">Seven accessibility pull requests scored for how the review process handled each one, and what actually predicted a good outcome.</p>
+      <li>
+        <div class="publication-meta">Bootcamp · August 2026</div>
+        <h3><a href="https://medium.com/design-bootcamp/can-your-project-actually-review-an-accessibility-contribution-15d055e24eb1" target="_blank" rel="noopener">Can your project actually review an accessibility contribution?<span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+        <p>Seven accessibility pull requests scored for how the review process handled each one, and what actually predicted a good outcome.</p>
       </li>
-
-      <li class="pub">
-        <div class="venue">Essay · August 2026</div>
-        <div class="title"><a href="writing/overlays-supply-chain.html">The overlay question security is rarely asked</a></div>
-        <p class="summary">Accessibility overlays treated as third-party scripts with authority over the page — and the security review that procurement often skips.</p>
+      <li>
+        <div class="publication-meta">Essay · August 2026</div>
+        <h3><a href="writing/overlays-supply-chain.html">The overlay question security is rarely asked</a></h3>
+        <p>Accessibility overlays treated as third-party scripts with authority over the page, and the security review that procurement often skips.</p>
       </li>
-
-      <li class="pub">
-        <div class="venue">DevOps.com · June 2026</div>
-        <div class="title"><a href="https://devops.com/what-five-localization-pull-requests-revealed-about-open-source-governance-a-field-report-on-open-sources-i18n-infrastructure-gap/" target="_blank" rel="noopener">What Five Localization Pull Requests Revealed About Open Source Governance<span class="visually-hidden"> (opens in a new tab)</span></a></div>
-        <p class="summary">A field report tracing five real localization contributions through upstream review, and what stalled each one.</p>
+      <li>
+        <div class="publication-meta">DevOps.com · June 2026</div>
+        <h3><a href="https://devops.com/what-five-localization-pull-requests-revealed-about-open-source-governance-a-field-report-on-open-sources-i18n-infrastructure-gap/" target="_blank" rel="noopener">What Five Localization Pull Requests Revealed About Open Source Governance<span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+        <p>A field report tracing five real localization contributions through upstream review, and what stalled each one.</p>
       </li>
-
-      <li class="pub">
-        <div class="venue">Communications of the ACM · May 2026</div>
-        <div class="title"><a href="https://cacm.acm.org/blogcacm/open-sources-hidden-language-gap/" target="_blank" rel="noopener">Open Source's Hidden Language Gap<span class="visually-hidden"> (opens in a new tab)</span></a></div>
-        <p class="summary">Why the localization gap in open source is an infrastructure problem rather than a translation problem.</p>
-      </li>
-      </ul>
-    </div>
+    </ol>
   </section>
 
-  <section id="background">
-    <div class="tag" aria-hidden="true">§04</div>
-    <div class="body">
+  <section id="method" class="method-section">
+    <header class="section-heading">
+      <h2>The research method is deliberately narrow</h2>
+      <p>Evidence before visibility, and a public artifact only when the evidence justifies one.</p>
+    </header>
+    <ol class="method-sequence">
+      <li><strong>Observe</strong><span>Study real projects and primary sources.</span></li>
+      <li><strong>Name</strong><span>Define the recurring infrastructure gap precisely.</span></li>
+      <li><strong>Test</strong><span>Score or catalogue what communities already invented.</span></li>
+      <li><strong>Ship</strong><span>Publish a small reference artifact.</span></li>
+      <li><strong>Invite critique</strong><span>Keep the evidence and decisions public.</span></li>
+    </ol>
+    <p class="method-link"><a href="method.html">Read the full method, evidence rules, and correction policy</a></p>
+  </section>
+
+  <section id="about" class="about-section">
+    <div>
       <h2>Background</h2>
-      <ul class="plain" role="list">
-        <li>30+ years in capital markets technology and product/program management — including eleven years in the United States (UBS, Deutsche Bank, Point72). It connects: financial services is where digital accessibility obligations are becoming enforceable.</li>
-        <li>Visiting faculty in management programs (strategy, finance, risk).</li>
-        <li>Independent advisor to early-stage founders on AI and product strategy.</li>
-        <li>Open to talks, briefings, and maintainer feedback on contribution infrastructure.</li>
-      </ul>
+    </div>
+    <div class="about-copy">
+      <p>My background is 30+ years in capital-markets technology and product/program management, including eleven years in the United States at UBS, Deutsche Bank, and Point72. It connects: financial services is where digital accessibility obligations are becoming enforceable.</p>
+      <p>I am visiting faculty in management programs (strategy, finance, risk) and an independent advisor to early-stage founders on AI and product strategy.</p>
+      <p>The work is published together through the <a href="https://oss-infrastructure-initiative.netlify.app/">OSS Infrastructure Initiative</a>. This site remains the researcher's record: writing, method, background, and contact.</p>
     </div>
   </section>
 
-  <section id="contact">
-    <div class="tag" aria-hidden="true">§05</div>
-    <div class="body">
+  <section id="contact" class="contact-section">
+    <div>
       <h2>Contact</h2>
-      <p>I welcome conversations with maintainers, OSPOs, foundations, researchers, and journalists working on these gaps.</p>
+      <p>I welcome conversations with maintainers, OSPOs, foundations, researchers, and journalists working on these gaps. I am open to talks, briefings, and maintainer feedback on contribution infrastructure.</p>
       <p>If you would like to help rather than talk: the initiative lists <a href="https://oss-infrastructure-initiative.netlify.app/contribute">open tasks grouped by skill</a>, from Hindi review to assistive-technology testing.</p>
-      <div class="contact-list">
-        <div><span class="label">GitHub</span><a href="https://github.com/ecogetaway" target="_blank" rel="noopener">github.com/ecogetaway<span class="visually-hidden"> (opens in a new tab)</span></a></div>
-        <div><span class="label">Mastodon</span><a href="https://mastodon.social/@ecogetaway" rel="me">@ecogetaway@mastodon.social</a></div>
-        <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/sanjay-c-1464602/" target="_blank" rel="noopener">linkedin.com/in/sanjay-c-1464602<span class="visually-hidden"> (opens in a new tab)</span></a></div>
-        <div><span class="label">Email</span><a href="mailto:ecogetaway@gmail.com">ecogetaway@gmail.com<span class="visually-hidden"> (opens your email application)</span></a></div>
-      </div>
+    </div>
+    <div class="contact-list">
+      <a href="mailto:ecogetaway@gmail.com"><span>Email</span><strong>ecogetaway@gmail.com</strong><span class="visually-hidden"> (opens your email application)</span></a>
+      <a href="https://github.com/ecogetaway" target="_blank" rel="noopener"><span>GitHub</span><strong>github.com/ecogetaway</strong><span class="visually-hidden"> (opens in a new tab)</span></a>
+      <a href="https://www.linkedin.com/in/sanjay-c-1464602/" target="_blank" rel="noopener"><span>LinkedIn</span><strong>linkedin.com/in/sanjay-c-1464602</strong><span class="visually-hidden"> (opens in a new tab)</span></a>
+      <a href="https://mastodon.social/@ecogetaway" rel="me"><span>Mastodon</span><strong>@ecogetaway@mastodon.social</strong></a>
+      <a href="https://oss-infrastructure-initiative.netlify.app/contribute"><span>Contribute</span><strong>Find an open task</strong></a>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <div>© 2026 Sanjay C. — Independent research</div>
-  <div><a href="accessibility.html">Accessibility statement</a> · Personal research portfolio</div>
+  <div>© 2026 Sanjay C. · Independent research · Bengaluru</div>
+  <div><a href="accessibility.html">Accessibility statement</a></div>
 </footer>
 
 </body>
