@@ -45,7 +45,7 @@
 <div class="hero" style="padding-bottom:12px;">
   <div class="eyebrow">ecogetaway.github.io</div>
   <h1 style="max-width:22ch;">Accessibility statement</h1>
-  <p class="byline">Last full review 7 August 2026; testing log updated 24 September 2026. This page states what conformance target this site holds itself to, which pages that target covers, what has actually been checked against that target, what is known not to meet it yet, and how to tell me about a barrier I haven't found.</p>
+  <p class="byline">Last full review 7 August 2026; testing log updated 24 September 2026; page list updated 31 October 2026. This page states what conformance target this site holds itself to, which pages that target covers, what has actually been checked against that target, what is known not to meet it yet, and how to tell me about a barrier I haven't found.</p>
   <hr class="rule-full" aria-hidden="true">
 </div>
 
@@ -54,7 +54,7 @@
     <div class="body">
       <h2>Conformance target</h2>
       <p>This site targets <strong style="color:var(--ink);">Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>. Where a fix on this page cites a standard, it names the specific success criterion rather than just saying "accessibility issue" — for example, 1.4.3 Contrast (Minimum), 2.4.11 Focus Not Obscured, 2.5.3 Label in Name.</p>
-      <p>The target applies to every public page on this hub: the home page (<code class="code-inline">index.html</code>), this accessibility statement, writing under <code class="code-inline">/writing/</code> (currently the overlay essay), and the not-found page (<code class="code-inline">404.html</code>). Shared presentation lives in one stylesheet (<code class="code-inline">style.css</code>) so contrast tokens, focus visibility, and sticky-header offset stay consistent across those pages.</p>
+      <p>The target applies to every public page on this hub: the home page (<code class="code-inline">index.html</code>), this accessibility statement, the method page (<code class="code-inline">method.html</code>), writing under <code class="code-inline">/writing/</code> (currently the overlay essay and the Translation Day note), and the not-found page (<code class="code-inline">404.html</code>). Shared presentation lives in one stylesheet (<code class="code-inline">style.css</code>) so contrast tokens, focus visibility, and sticky-header offset stay consistent across those pages.</p>
       <p>This is a one-person personal site with no continuous integration (CI) pipeline, so conformance is checked by scan plus manual review, not by an automated gate on every change. That is a real limitation, named here rather than implied away.</p>
     </div>
   </section>
@@ -87,6 +87,7 @@
     <div class="body">
       <h2>Known issues</h2>
       <ul class="plain" role="list">
+        <li><strong style="color:var(--ink);">Two newer pages not yet tested.</strong> The method page and the Translation Day note were added after the last recorded scan. Neither has had an automated scan or a VoiceOver pass, so the testing log above does not cover them.</li>
         <li><strong style="color:var(--ink);">Screen-reader coverage still narrow.</strong> Safari + VoiceOver on the hub is done (see Testing log). NVDA, JAWS, and TalkBack have not been run, and VoiceOver has not been re-run on this statement or the writing page. Named here so the gap stays visible.</li>
       </ul>
       <h3 style="margin-top:22px;">Contested findings</h3>
